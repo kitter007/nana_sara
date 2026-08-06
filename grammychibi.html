@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>เทคโนโลยีสารสนเทศ 2/1</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Sidebar desktop */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 56px; /* ความสูง navbar */
+      left: 0;
+      background: #343a40;
+      padding-top: 10px;
+    }
+
+    .sidebar a {
+      color: white;
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background: #495057;
+    }
+
+    /* Content */
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      margin-top: 56px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .sidebar {
+        left: -250px;
+        transition: 0.3s;
+      }
+
+      .sidebar.active {
+        left: 0;
+      }
+
+      .content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-primary fixed-top">
+  <div class="container-fluid">
+
+    <!-- กลุ่มฝั่งซ้าย -->
+    <div class="d-flex align-items-center">
+      <button class="btn btn-outline-light me-2" onclick="toggleSidebar()">☰</button>
+      <span class="navbar-brand mb-0 h1">เทคโนโลยีสารสนเทศ 2/1</span>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar" style="margin-top: -10px;">
+  <a href="#">Menu 1</a>
+  <a href="#">Menu 2</a>
+  <a href="#">Menu 3</a>
+  <a href="#">Menu 4</a>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <div class="row align-items-center g-4 my-2">
+    <div class="col-md-7 col-lg-8">
+      <h2>Made in Heaven (เมด อิน เฮฟเว่น)</h2>
+      <p class="text-muted mb-2"><strong>ร่างต้น:</strong> บาทหลวง เอ็นริโก้ พุชชี่ (Enrico Pucci) | <strong>เรื่อง:</strong> JoJo's Bizarre Adventure Part 6: Stone Ocean</p>
+      <p class="mb-0">Made in Heaven เป็นหนึ่งในสแตนด์ที่แข็งแกร่งและทรงพลังที่สุดในจักรวาล JoJo's Bizarre Adventure โดยเป็นผลลัพธ์สูงสุดของ "แผนการสู่สรวงสวรรค์" (Heaven Plan) ที่เขียนไว้ในสมุดบันทึกของ DIO</p>
+    </div>
+    <div class="col-md-5 col-lg-4">
+      <img src="img/7j8c3dvs4wtf1.gif" alt="Made in Heaven" class="img-fluid rounded shadow-sm w-100" style="height: 220px; object-fit: cover;" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+  <hr class="my-4">
+
+  <h4 class="mt-4">1. จุดกำเนิดและวิวัฒนาการ (Evolution)</h4>
+  <p>สแตนด์ร่างนี้เกิดจากการวิวัฒนาการต่อเนื่องกัน 3 ขั้นตอน:</p>
+  <ul>
+    <li><strong>Whitesnake:</strong> สแตนด์ร่างแรก ใช้ถอดดวงวิญญาณและความทรงจำออกมาเป็นแผ่นดิสก์</li>
+    <li><strong>C-Moon:</strong> เกิดจากการรวมร่างกับ "เด็กทารกสีเขียว" (Green Baby) ทำให้ควบคุมแรงดึงดูดรอบตัวได้</li>
+    <li><strong>Made in Heaven:</strong> เกิดขึ้นเมื่อเดินทางไปตามพิกัดและเงื่อนไขเวลาที่ DIO กำหนดไว้ ณ ศูนย์อวกาศเคนเนดี ในคืนวันพระจันทร์ดับ</li>
+  </ul>
+
+  <div class="my-4 text-center">
+    <img src="img/Pucci_achieves_Made_in_Heaven_4k_60fps_Jojo_s_Bizzare_Adventure_Stone_Ocean_Part_6.gif" alt="ขั้นตอนการวิวัฒนาการ" class="img-fluid rounded shadow-sm mx-auto d-block w-100" style="max-width: 720px; height: 320px; object-fit: cover;" onerror="this.style.display='none'">
+  </div>
+
+  <h4 class="mt-4">2. รูปลักษณ์และที่มาของชื่อ (Appearance & Name Origin)</h4>
+  <div class="row align-items-center g-4">
+    <div class="col-md-7">
+      <ul>
+        <li><strong>รูปลักษณ์:</strong> มีลักษณะครึ่งคนครึ่งม้า (คล้ายเซนทอร์) ท่อนบนเป็นมนุษย์ ท่อนล่างและส่วนหน้าเป็นหัวม้า มีหน้าปัดนาฬิกาประดับอยู่ตามร่างกาย สื่อถึงเวลาและการเคลื่อนที่อย่างรวดเร็ว</li>
+        <li><strong>ที่มาของชื่อ:</strong> ตั้งตามชื่ออัลบั้มและเพลงของวง Queen (ปี 1995) โดยในนิตยสารรายสัปดาห์ตอนแรกเคยใช้ชื่อว่า <em>Stairway to Heaven</em> (ของ Led Zeppelin) ก่อนจะเปลี่ยนเป็น Made in Heaven ในฉบับรวมเล่ม</li>
+      </ul>
+    </div>
+    <div class="col-md-5">
+      <img src="img/tumblr_f5ddce3fd9051ca4ad828c37beed14d7_417fec34_500.gif" alt="รูปลักษณ์สแตนด์" class="img-fluid rounded shadow-sm w-100" style="height: 220px; object-fit: cover;" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+  <h4 class="mt-4">3. เจาะลึกความสามารถ (Abilities & Mechanics)</h4>
+  <p>ความสามารถหลักคือ <strong>"การเร่งเวลาของจักรวาลในระดับไร้ขีดจำกัด" (Universal Time Acceleration)</strong> ผ่านการควบคุมแรงดึงดูดของจักรวาล:</p>
+  <ol>
+    <li><strong>การเร่งเวลาของสิ่งไม่มีชีวิต:</strong> สิ่งไม่มีชีวิต เทคโนโลยี และปรากฏการณ์ธรรมชาติจะถูกเร่งเวลาอย่างมหาศาล โดยสิ่งมีชีวิตจะไม่ถูกเร่งไปด้วย ทำให้เผชิญกับโลกที่หมุนเร็วเกินรับทัน</li>
+    <li><strong>ความเหนือมนุษย์ของพุชชี่:</strong> มีเพียงพุชชี่และสแตนด์เท่านั้นที่เคลื่อนไหวสอดคล้องกับเวลาที่ถูกเร่งได้ ทำให้พุชชี่เคลื่อนที่เร็วระดับอนันต์ (Infinite Speed) จนกระทั่งการหยุดเวลาของ Star Platinum ถูกบีบให้เหลือเพียงเสี้ยววินาที</li>
+    <li><strong>การรีเซ็ตจักรวาล (Universe Reset):</strong> เมื่อเร่งเวลาไปจนถึงจุดสิ้นสุดของจักรวาล (Singularity Point) จักรวาลจะกำเนิดใหม่และสร้างตัวเองขึ้นมาใหม่ในรูปแบบเดิม (Loop/Rebirth)</li>
+    <li><strong>นิยามของ "สวรรค์" (Absolute Fate):</strong> เมื่อจักรวาลรีเซ็ต มนุษย์ทุกคนจะรับรู้ถึง "ชะตากรรม" ของตัวเองในอนาคตล่วงหน้าโดยสัญชาตญาณ พุชชี่เชื่อว่าการรับรู้และยอมรับชะตากรรมคือความสงบสุขทางจิตใจอย่างแท้จริง</li>
+  </ol>
+
+  <div class="my-4 text-center">
+    <img src="img/made-in-heaven-universe-reset.gif" alt="การเร่งเวลา" class="img-fluid rounded shadow-sm mx-auto d-block w-100" style="max-width: 720px; height: 320px; object-fit: cover;" onerror="this.style.display='none'">
+  </div>
+
+  <h4 class="mt-4">4. สถิติของสแตนด์ (Stand Stats)</h4>
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>พารามิเตอร์</th>
+          <th style="width: 140px;">ระดับ</th>
+          <th>คำอธิบาย</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>พลังทำลาย (Destructive Power)</strong></td>
+          <td>B</td>
+          <td>พลังหมัดปานกลาง แต่ความเร็วสูงทำให้เกิดแรงปะทะระดับสังหารได้ง่าย</td>
+        </tr>
+        <tr>
+          <td><strong>ความเร็ว (Speed)</strong></td>
+          <td>∞ (Infinite)</td>
+          <td>ไร้ขีดจำกัด เร่งขึ้นเรื่อยๆ ตามเวลาที่ผ่านไป</td>
+        </tr>
+        <tr>
+          <td><strong>ระยะทาง (Range)</strong></td>
+          <td>C</td>
+          <td>ระยะหมัดคือ C แต่ผลกระทบจากการเร่งเวลามีผลทั่วทั้งจักรวาล</td>
+        </tr>
+        <tr>
+          <td><strong>ความทนทาน (Persistence)</strong></td>
+          <td>A</td>
+          <td>มีความเสถียรและทนทานสูงมากในการทำงานต่อเนื่อง</td>
+        </tr>
+        <tr>
+          <td><strong>ความแม่นยำ (Precision)</strong></td>
+          <td>C</td>
+          <td>ด้วยความเร็วที่สูงมาก การควบคุมจุดปะทะละเอียดทำได้ยาก</td>
+        </tr>
+        <tr>
+          <td><strong>การพัฒนา (Development Potential)</strong></td>
+          <td>A</td>
+          <td>ศักยภาพสูงสุดในการเปลี่ยนโลกและสร้างจักรวาลใหม่</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 class="mt-4">5. จุดอ่อนและการพ่ายแพ้ (Weakness & Defeat)</h4>
+  <ul>
+    <li><strong>ไม่สามารถแทรกแซงชะตากรรม:</strong> พุชชี่ไม่สามารถเปลี่ยนชะตากรรมที่ถูกกำหนดไว้แล้วได้ ทำได้เพียงเร่งให้เกิดขึ้นเร็วขึ้นเท่านั้น</li>
+    <li><strong>สังขารของพุชชี่:</strong> ร่างกายของพุชชี่ยังคงเป็นมนุษย์ธรรมดาที่บาดเจ็บและรับผลกระทบทางกายภาพได้ตามปกติ</li>
+    <li><strong>พ่ายแพ้ด้วยพิษออกซิเจน:</strong> เอ็มโพริโอ (Emporio) ใช้สแตนด์ Weather Report ปล่อยแก๊สออกซิเจนเข้มข้น 100% ในห้องกระจก การเร่งเวลาของ Made in Heaven บังคับให้พุชชี่สูดออกซิเจนเข้าสู่ร่างกายอย่างรวดเร็วเร่งด่วนจนเกิดภาวะเป็นพิษและเสียชีวิต</li>
+    <li><strong>ผลกระทบหลังพุชชี่เสียชีวิต:</strong> การที่พุชชี่ตายก่อนเร่งเวลากลับมาครบลูปเดิม ทำให้จักรวาลเรียงตัวใหม่อีกครั้งโดยไม่มีตัวตนของพุชชี่อยู่อีกเลย นำไปสู่จักรวาลใหม่ (Ireneverse) ที่พวกโ
