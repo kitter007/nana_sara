@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game World - เทคโนโลยีสารสนเทศ 2/1</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #0b0f19;
+      --bg-card: #161f32;
+      --bg-sidebar: #111827;
+      --accent: #06b6d4;
+      --accent-hover: #0891b2;
+      --text-main: #ffffff;
+      --text-muted: #cbd5e1; /* ปรับให้สว่างขึ้นจากเดิม */
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Kanit', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--bg-sidebar) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1040;
+    }
+
+    /* Sidebar Desktop */
+    .sidebar {
+      width: 240px;
+      height: 100vh;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      background-color: var(--bg-sidebar);
+      padding-top: 15px;
+      transition: all 0.3s ease;
+      z-index: 1030;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar a {
+      color: var(--text-muted);
+      display: block;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: 400;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      color: #ffffff;
+      background-color: rgba(6, 182, 212, 0.2);
+      border-left: 4px solid var(--accent);
+    }
+
+    /* Main Content Wrapper */
+    .main-wrapper {
+      margin-left: 240px;
+      margin-top: 56px;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile Sidebar Toggle */
+    @media (max-width: 991.98px) {
+      .sidebar {
+        left: -240px;
+      }
+      .sidebar.active {
+        left: 0;
+      }
+      .main-wrapper {
+        margin-left: 0;
+      }
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(rgba(11, 15, 25, 0.65), rgba(11, 15, 25, 0.95)), 
+                  url("https://images.unsplash.com/photo-1542751371-adc38448a05b?w=1600") center/cover no-repeat;
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-box {
+      background: rgba(22, 31, 50, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+    }
+
+    /* Game Cards & Section Title */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      border-left: 5px solid var(--accent);
+      padding-left: 15px;
+      color: #ffffff;
+    }
+
+    .game-card {
+      background-color: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .game-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(6, 182, 212, 0.3);
+      border-color: rgba(6, 182, 212, 0.6);
+    }
+
+    .game-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .btn-play {
+      background-color: var(--accent);
+      color: #ffffff;
+      font-weight: 600;
+      border: none;
+      transition: 0.2s;
+    }
+
+    .btn-play:hover {
+      background-color: var(--accent-hover);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.5);
+    }
+
+    /* 🔥 ปรับปรุงความสว่างของ Form / Input / Placeholder */
+    .form-control {
+      background-color: #0f172a !important;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      color: #ffffff !important;
+      font-size: 1rem;
+    }
+
+    .form-control::placeholder {
+      color: #94a3b8 !important; /* ปรับข้อความตัวอย่างให้สว่าง อ่านออกง่าย */
+      opacity: 1;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent) !important;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.5) !important;
+    }
+
+    /* Text Brightness Adjustments */
+    .text-bright {
+      color: #f1f5f9 !important;
+    }
+
+    .text-bright-muted {
+      color: #cbd5e1 !important;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg-sidebar);
+      padding: 30px 0;
+      margin-top: 60px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-dark fixed-top">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center">
+        <button class="btn btn-outline-light btn-sm me-3" onclick="toggleSidebar()">☰</button>
+        <span class="navbar-brand mb-0 h1 fs-5 text-bright">เทคโนโลยีสารสนเทศ 2/1</span>
+      </div>
+    </div>
+  </nav>
+
+  <div id="sidebar" class="sidebar">
+    <a href="#home" class="active">หน้าแรก</a>
+    <a href="#games">เกมทั้งหมด</a>
+    <a href="#news">ข่าวสาร</a>
+    <a href="#contact">ติดต่อเรา</a>
+  </div>
+
+  <div class="main-wrapper">
+
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="hero-box">
+              <h1>GAME WORLD</h1>
+              <p class="text-bright fs-5 mt-2">รวมเกมยอดฮิต เล่นฟรี อัปเดตใหม่ทุกวัน</p>
+              <div class="d-flex gap-2 mt-4">
+                <input class="form-control" placeholder="ค้นหาเกมที่คุณต้องการ...">
+                <button class="btn btn-play px-4">ค้นหา</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container py-5" id="games">
+      <div class="section-title">
+        🔥 เกมยอดนิยม
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="card game-card">
+            <img src="pic/Roblox.avif" class="card-img-top" alt="Roblox">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title text-white">Roblox</h4>
+              <p class="card-text text-bright-muted flex-grow-1">เกมออนไลน์ที่สร้างโลกได้ไม่จำกัด</p>
+              <button class="btn btn-play w-100 mt-3">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card game-card">
+            <img src="pic/Minecraft.webp" class="card-img-top" alt="Minecraft">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title text-white">Minecraft</h4>
+              <p class="card-text text-bright-muted flex-grow-1">เกมสร้างโลกแบบ Sandbox สุดจินตนาการ</p>
+              <button class="btn btn-play w-100 mt-3">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card game-card">
+            <img src="pic/Valorant.avif" class="card-img-top" alt="Valorant">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title text-white">Valorant</h4>
+              <p class="card-text text-bright-muted flex-grow-1">เกม FPS สุดมันส์วางแผนกลยุทธ์จาก Riot Games</p>
+              <button class="btn btn-play w-100 mt-3">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card game-card">
+            <img src="pic/Genshin Impact.jpg" class="card-img-top" alt="Genshin Impact">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title text-white">Genshin Impact</h4>
+              <p class="card-text text-bright-muted flex-grow-1">เกม RPG ท่องโลกกว้าง Open-world ภาพสวยอลังการ</p>
+              <button class="btn btn-play w-100 mt-3">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card game-card">
+            <img src="pic/League of Legends.webp" class="card-img-top" alt="League of Legends">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title text-white">League of Legends</h4>
+              <p class="card-text text-bright-muted flex-grow-1">เกม MOBA วางแผนต่อสู้ระดับโลกแบบ 5v5</p>
+              <button class="btn btn-play w-100 mt-3">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card game-card">
+            <img src="pic/Apex Legends.webp" class="card-img-top" alt="Apex Legends">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title text-white">Apex Legends</h4>
+              <p class="card-text text-bright-muted flex-grow-1">เกม Battle Royale ยิงเร็วด้วยสกิลตัวละครสุดล้ำ</p>
+              <button class="btn btn-play w-100 mt-3">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card game-card">
+            <img src="pic/Free Fire.jpg" class="card-img-top" alt="Free Fire">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title text-white">Free Fire</h4>
+              <p class="card-text text-bright-muted flex-grow-1">Battle Royale บนมือถือ เล่นฟรี เข้าถึงง่าย</p>
+              <button class="btn btn-play w-100 mt-3">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card game-card">
+            <img src="pic/PUBG Mobile.webp" class="card-img-top" alt="PUBG">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title text-white">PUBG Mobile</h4>
+              <p class="card-text text-bright-muted flex-grow-1">เกมเอาชีวิตรอดระดับตำนาน สมจริงสมจัง</p>
+              <button class="btn btn-play w-100 mt-3">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card game-card">
+            <img src="pic/GTA V Online.jpg" class="card-img-top" alt="GTA V">
+            <div class="card-body d-flex flex-column">
+              <h4 class="card-title text-white">GTA V Online</h4>
+              <p class="card-text text-bright-muted flex-grow-1">เปิดโลกกว้างในเมืองใหญ่ ท้าทายภารกิจสุดมันส์</p>
+              <button class="btn btn-play w-100 mt-3">Play Now</button>
+            </div>
+          </div>
+        </div>
+
+    <section id="news" class="container py-4">
+      <div class="section-title">
+        📰 ข่าวสารเกม
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card game-card p-3">
+            <div class="card-body">
+              <h5 class="text-white">🎉 Roblox Event</h5>
+              <p class="text-bright-muted mb-0">กิจกรรมใหม่แจกไอเทมลิมิเต็ดฟรีประจำเดือนนี้</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card game-card p-3">
+            <div class="card-body">
+              <h5 class="text-white">⚔ Minecraft Update</h5>
+              <p class="text-bright-muted mb-0">อัปเดตเวอร์ชันใหม่ เพิ่ม Biome และสัตว์ชนิดใหม่</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card game-card p-3">
+            <div class="card-body">
+              <h5 class="text-white">🔥 Valorant Season</h5>
+              <p class="text-bright-muted mb-0">เปิดตัว Agent ใหม่ พร้อม Battle Pass ประจำซีซั่น</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container py-5">
+      <div class="section-title">
+        📬 ติดต่อเรา
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="card game-card p-4">
+            <h4 class="text-white mb-3">ข้อมูลการติดต่อ</h4>
+            <p class="text-bright-muted fs-6">หากมีคำถาม ข้อเสนอแนะ หรือต้องการเพิ่มเกม สามารถติดต่อทีมงานได้เลย</p>
+            
+            <div class="mt-4 text-bright fs-6">
+              <p class="mb-3"><strong>📍 ที่อยู่:</strong> แผนกเทคโนโลยีสารสนเทศ 2/1</p>
+              <p class="mb-3"><strong>📧 อีเมล:</strong> <span class="text-info">maecharim12@gmail.com</span></p>
+              <p class="mb-0"><strong>📞 โทรศัพท์:</strong> <span class="text-info">097-0064-054</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="card game-card p-4">
+            <h4 class="text-white mb-3">ส่งข้อความหาเรา</h4>
+            <form onsubmit="event.preventDefault(); alert('ส่งข้อความเรียบร้อยแล้ว!');">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label text-bright fw-semibold">ชื่อของคุณ</label>
+                  <input type="text" class="form-control" placeholder="กรอกชื่อ-นามสกุล" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-bright fw-semibold">อีเมล</label>
+                  <input type="email" class="form-control" placeholder="example@email.com" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-bright fw-semibold">หัวข้อ</label>
+                  <input type="text" class="form-control" placeholder="เช่น แนะนำเกมใหม่, แจ้งปัญหา" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-bright fw-semibold">ข้อความ</label>
+                  <textarea class="form-control" rows="4" placeholder="พิมพ์ข้อความของคุณที่นี่..." required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-play px-4 py-2 w-100 fs-5">ส่งข้อความ</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <h4 class="text-white mb-2">🎮 Game World</h4>
+        <p class="mb-0 text-bright-muted">เว็บไซต์รวมเกมยอดนิยม - สาขาเทคโนโลยีสารสนเทศ 2/1</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('active');
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
