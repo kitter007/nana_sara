@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>เทคโนโลยีสารสนเทศ 2/1 - กรุงเทพมหานคร</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #1a237e;
+      --secondary-color: #d81b60;
+      --accent-color: #ffc107;
+      --bg-light: #f4f6f9;
+      --text-dark: #2c3e50;
+    }
+
+    body {
+      overflow-x: hidden;
+      background-color: var(--bg-light);
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 56px; 
+      left: 0;
+      background: #343a40;
+      padding-top: 10px;
+      z-index: 1000;
+    }
+
+    .sidebar a {
+      color: white;
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background: #495057;
+    }
+
+   
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      margin-top: 56px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        left: -250px;
+        transition: 0.3s;
+      }
+
+      .sidebar.active {
+        left: 0;
+      }
+
+      .content {
+        margin-left: 0;
+      }
+    }
+
+    .bangkok-content {
+      font-family: 'Sarabun', sans-serif;
+      color: var(--text-dark);
+    }
+
+    .hero-section {
+      position: relative;
+      background: url('https://ngthai.com/app/uploads/2019/11/Chaopraya-river.jpg') no-repeat center center/cover;
+      height: 450px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to bottom, rgba(26, 35, 126, 0.4), rgba(0, 0, 0, 0.8));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      text-shadow: 2px 4px 8px rgba(0,0,0,0.6);
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 25px;
+      text-shadow: 1px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .btn-custom {
+      background: var(--secondary-color);
+      color: white;
+      padding: 12px 35px;
+      border-radius: 50px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      box-shadow: 0 4px 15px rgba(216, 27, 96, 0.4);
+    }
+
+    .btn-custom:hover {
+      background: #c2185b;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(216, 27, 96, 0.6);
+      color: white;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 5px;
+      background: var(--secondary-color);
+      border-radius: 5px;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .info-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .info-card img {
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .info-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .info-card .card-body {
+      padding: 25px;
+    }
+
+    .info-card .card-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .info-card .card-text {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .badge-custom {
+      background-color: #e8eaf6;
+      color: var(--primary-color);
+      font-size: 1rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    .stats-container {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      margin-bottom: 50px;
+    }
+    
+    .stat-box {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .stat-icon {
+      font-size: 3rem;
+      color: var(--secondary-color);
+      margin-bottom: 15px;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 1.2rem;
+      color: #7f8c8d;
+    }
+
+    .content-box {
+      background: white;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      font-size: 1.3rem;
+      line-height: 1.8;
+      margin-bottom: 50px;
+      border-left: 8px solid var(--accent-color);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-primary fixed-top">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center">
+      <button class="btn btn-outline-light me-2" onclick="toggleSidebar()">☰</button>
+      <span class="navbar-brand mb-0 h1">เทคโนโลยีสารสนเทศ 2/1</span>
+    </div>
+  </div>
+</nav>
+
+<div id="sidebar" class="sidebar" style="margin-top: -10px;">
+  <a href=" index.html">Menu 1</a>
+  <a href="jiruchchaya.html">Jiruchchaya</a>
+  <a href="menu3.html">Menu 3</a>
+  <a href="menu4.html">Menu 4</a>
+</div>
+
+<div class="content">
+  <div class="bangkok-content">
+    
+    <div class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>กรุงเทพมหานคร</h1>
+        <p>มหานครแห่งความหลากหลาย ศูนย์กลางทางเศรษฐกิจ วัฒนธรรม และการท่องเที่ยวของประเทศไทย</p>
+        <a href="#about" class="btn-custom"><i class="fas fa-compass me-2"></i>เริ่มการสำรวจ</a>
+      </div>
+    </div>
+
+    <div class="container-fluid p-0">
+      <div class="row mb-5" id="about">
+        <div class="col-12">
+          <h2 class="section-title">ข้อมูลเบื้องต้นเกี่ยวกับกรุงเทพฯ</h2>
+          <div class="content-box">
+            <p>
+              <strong>กรุงเทพมหานคร (Bangkok)</strong> เป็นเมืองหลวงและนครที่มีประชากรมากที่สุดของประเทศไทย เป็นศูนย์กลางการปกครอง การศึกษา การคมนาคมขนส่ง การเงินการธนาคาร การพาณิชย์ การสื่อสาร และความเจริญของประเทศ ตั้งอยู่บนสามเหลี่ยมปากแม่น้ำเจ้าพระยา มีแม่น้ำเจ้าพระยาไหลผ่านและแบ่งเมืองออกเป็น 2 ฝั่ง คือ ฝั่งพระนครและฝั่งธนบุรี
+            </p>
+            <p>
+              ชื่อเต็มของกรุงเทพมหานครได้รับการจดบันทึกในกินเนสส์บุ๊กชิ้นว่าเป็น <em>"ชื่อเมืองที่ยาวที่สุดในโลก"</em> เมืองนี้เต็มไปด้วยการผสมผสานระหว่างสถาปัตยกรรมดั้งเดิมอันวิจิตรตระการตา เช่น พระบรมมหาราชวังและวัดวาอาราม กับตึกระฟ้าและห้างสรรพสินค้าที่ทันสมัยระดับโลก
+            </p>
+            <div class="mt-4">
+              <a href="https://th.wikipedia.org/wiki/กรุงเทพมหานคร" target="_blank" class="btn btn-outline-primary rounded-pill px-4 fs-5"><i class="fab fa-wikipedia-w me-2"></i>อ่านประวัติฉบับเต็ม</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6 stat-box">
+            <i class="fas fa-users stat-icon"></i>
+            <div class="stat-number">10.5M+</div>
+            <div class="stat-label">ประชากร (โดยประมาณ)</div>
+          </div>
+          <div class="col-md-3 col-sm-6 stat-box">
+            <i class="fas fa-map-marked-alt stat-icon"></i>
+            <div class="stat-number">1,568</div>
+            <div class="stat-label">พื้นที่ (ตร.กม.)</div>
+          </div>
+          <div class="col-md-3 col-sm-6 stat-box">
+            <i class="fas fa-subway stat-icon"></i>
+            <div class="stat-number">50+</div>
+            <div class="stat-label">เขตการปกครอง</div>
+          </div>
+          <div class="col-md-3 col-sm-6 stat-box">
+            <i class="fas fa-plane-arrival stat-icon"></i>
+            <div class="stat-number">22M+</div>
+            <div class="stat-label">นักท่องเที่ยวต่อปี</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-title">สถานที่ท่องเที่ยวระดับโลก</h2>
+      <div class="row g-4 mb-5">
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="card info-card">
+            <img src="photo2.jpeg" class="card-img-top" alt="วัดพระแก้ว">
+            <div class="card-body d-flex flex-column">
+              <span class="badge-custom"><i class="fas fa-vihara me-1"></i>วัฒนธรรม & ประวัติศาสตร์</span>
+              <h5 class="card-title">วัดพระศรีรัตนศาสดาราม</h5>
+              <p class="card-text">หรือที่รู้จักในชื่อ "วัดพระแก้ว" เป็นวัดคู่บ้านคู่เมืองของประเทศไทย ประดิษฐานพระพุทธมหามณีรัตนปฏิมากร สถาปัตยกรรมงดงามวิจิตรที่สุดแห่งหนึ่งของโลก</p>
+              <a href="https://www.tourismthailand.org/Attraction/wat-phra-kaew" target="_blank" class="btn btn-custom mt-auto text-center">ดูข้อมูลสถานที่ท่องเที่ยว</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card info-card">
+            <img src="photo3.jpg" class="card-img-top" alt="วัดอรุณ">
+            <div class="card-body d-flex flex-column">
+              <span class="badge-custom"><i class="fas fa-monument me-1"></i>แลนด์มาร์คริมน้ำ</span>
+              <h5 class="card-title">วัดอรุณราชวราราม</h5>
+              <p class="card-text">โดดเด่นด้วยพระปรางค์ที่ประดับประดาด้วยกระเบื้องเคลือบสีสันสวยงาม ตั้งอยู่ริมแม่น้ำเจ้าพระยา เป็นจุดชมพระอาทิตย์ตกที่สวยงามที่สุดแห่งหนึ่ง</p>
+              <a href="https://www.tourismthailand.org/Attraction/wat-arun" target="_blank" class="btn btn-custom mt-auto text-center">ดูข้อมูลสถานที่ท่องเที่ยว</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card info-card">
+            <img src="photo4.jfif" class="card-img-top" alt="สตรีทฟู้ดกรุงเทพ">
+            <div class="card-body d-flex flex-column">
+              <span class="badge-custom"><i class="fas fa-utensils me-1"></i>อาหาร & ไลฟ์สไตล์</span>
+              <h5 class="card-title">สวรรค์แห่ง Street Food</h5>
+              <p class="card-text">กรุงเทพฯ ได้รับการยกย่องให้เป็นหนึ่งในเมืองที่มีสตรีทฟู้ดที่ดีที่สุดในโลก ไม่ว่าจะเป็น ผัดไทย ต้มยำกุ้ง ส้มตำ หรือข้าวเหนียวมะม่วง ที่เยาวราชและถนนข้าวสาร</p>
+              <a href="https://guide.michelin.com/th/th/bangkok-region/bangkok/restaurants/street-food" target="_blank" class="btn btn-custom mt-auto text-center">ค้นหาร้านเด็ด Michelin</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
