@@ -201,17 +201,11 @@
     .story {
 
       max-width: 1000px;
-
       margin: 0 auto;
-
       background: rgba(255, 255, 255, .08);
-
       backdrop-filter: blur(12px);
-
       padding: 45px 60px;
-
       border-radius: 20px;
-
       text-align: center;
 
     }
@@ -219,13 +213,9 @@
     .story p {
 
       font-size: 20px;
-
       line-height: 2.2;
-
       margin-bottom: 28px;
-
       color: white;
-
       letter-spacing: .5px;
 
     }
@@ -429,26 +419,25 @@
 
   <!-- Navbar -->
   <nav class="navbar navbar-dark bg-primary fixed-top">
-    <div class="container-fluid">
+  <div class="container-fluid">
 
-      <!-- กลุ่มฝั่งซ้าย -->
-      <div class="d-flex align-items-center">
-        <button class="btn btn-outline-light me-2" onclick="toggleSidebar()">☰</button>
-        <span class="navbar-brand mb-0 h1">เทคโนโลยีสารสนเทศ 2/1</span>
-      </div>
-
+    <!-- กลุ่มฝั่งซ้าย -->
+    <div class="d-flex align-items-center">
+      <button class="btn btn-outline-light me-2" style="margin-top: 0px;" onclick="toggleSidebar()">☰</button>
+      <span class="navbar-brand mb-0 h1">เทคโนโลยีสารสนเทศ 2/1</span>
     </div>
-  </nav>
+
+  </div>
+</nav>
 
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar" style="margin-top: -10px;">
-    <a href="#">Menu 1</a>
-    <a href="#">Menu 2</a>
+    <a href="index.html">หน้าหลัก</a>
+    <a href="kanyaphak.html">kanyaphak</a>
     <a href="#">Menu 3</a>
     <a href="#">Menu 4</a>
   </div>
 
-  <!-- Content -->
   <div class="content">
 
     <!-- Hero -->
@@ -745,10 +734,6 @@
 
   <script>
 
-    // ===============================
-    // Sidebar
-    // ===============================
-
     function toggleSidebar() {
 
       const sidebar = document.getElementById("sidebar");
@@ -814,10 +799,12 @@
 
     });
 
+    function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
-
 </html>
