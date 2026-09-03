@@ -120,7 +120,7 @@
       text-shadow: 0 0 12px var(--gold-glow);
     }
 
-    /* Content Area (ใส่ Effect เปลี่ยนสีที่นี่แทน body ป้องกัน Navbar เสียหาย) */
+    /* Content Area */
     .content {
       margin-left: 260px;
       padding: 30px 30px 90px;
@@ -356,6 +356,48 @@
       border: 1.5px solid #e879f9; 
       box-shadow: 0 0 25px rgba(232, 121, 249, 0.7);
       font-size: 1.65rem;
+    }
+
+    /* Versus Matchup Card Styles */
+    .vs-matchup-card {
+      background: rgba(16, 12, 32, 0.85);
+      border: 1px solid rgba(176, 38, 255, 0.3);
+      border-radius: 20px;
+      padding: 24px;
+      position: relative;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .vs-matchup-card:hover {
+      border-color: var(--gold-jojo);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(176, 38, 255, 0.3);
+    }
+
+    .vs-badge-advantage {
+      background: rgba(34, 197, 94, 0.2);
+      color: #4ade80;
+      border: 1px solid #22c55e;
+      font-family: 'Cinzel', monospace;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+    }
+
+    .vs-badge-counter {
+      background: rgba(255, 215, 0, 0.2);
+      color: #ffd700;
+      border: 1px solid #ffd700;
+      font-family: 'Cinzel', monospace;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
     }
 
     /* Mobile Responsive */
@@ -763,7 +805,125 @@
     </div>
   </section>
 
-  <!-- 5. Weakness & Defeat (The Singularity Overturned) -->
+  <!-- 5. THE ULTIMATE STAND CLASH (เปรียบเทียบกับสแตนด์ตัวท็อปในอนิเมะ) -->
+  <section class="mb-5">
+    <div class="jojo-chamfer-card" style="border: 2px solid rgba(0, 245, 255, 0.45); background: linear-gradient(160deg, rgba(14, 10, 32, 0.95) 0%, rgba(8, 5, 18, 0.95) 100%);">
+      <span class="hud-reticle-tl">TACTICAL_COMPARISON // TOP-TIER STANDS</span>
+      <span class="hud-reticle-br">[ + ] CLASH_DATABASE</span>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="section-god-title w-100">
+          <span class="section-god-icon" style="background: linear-gradient(135deg, var(--cyan-energy) 0%, #0369a1 100%); border-color: var(--cyan-energy);">
+            <i class="fa-solid fa-bolt-lightning text-white"></i>
+          </span>
+          <span>5. มหาศึกข้ามมิติ: Made in Heaven VS สแตนด์ระดับเทพในอนิเมะ</span>
+          <span class="manga-sfx ms-auto d-none d-md-inline fs-4">ゴゴゴゴ</span>
+        </h2>
+      </div>
+
+      <p class="text-secondary small mb-4" style="color: #cbd5e1 !important;">
+        การวิเคราะห์เชิงลึกตามกฎมิติเวลาและเนื้อเรื่องอนิเมะ (Part 3 - Part 6) เมื่อสแตนด์ที่เร่งเวลาเอกภพ ต้องประจันหน้ากับสุดยอดสแตนด์ผู้บงการกาลเวลาและชะตากรรม:
+      </p>
+
+      <div class="row g-4 mb-4">
+        <!-- 1. Star Platinum / The World -->
+        <div class="col-lg-6">
+          <div class="vs-matchup-card">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <h4 class="fw-bold text-white font-monospace mb-0">Star Platinum / The World</h4>
+                <small class="text-warning">ผู้ใช้: โจทาโร่ คูโจ / DIO (Part 3, 4, 6)</small>
+              </div>
+              <span class="vs-badge-advantage"><i class="fa-solid fa-trophy me-1"></i> ได้เปรียบเชิงมิติ</span>
+            </div>
+
+            <div class="p-2 rounded-3 mb-3 small font-monospace" style="background: rgba(0,0,0,0.5); border-left: 3px solid var(--cyan-energy);">
+              <span class="text-info">แก่นพลัง:</span> การหยุดเวลาสัมบูรณ์ (Time Stop 5 วินาที)
+            </div>
+
+            <p class="text-secondary small mb-0" style="color: #cbd5e1 !important;">
+              <strong>ผลการปะทะ:</strong> ในฉากสู้จริงที่แหลมคานาเวอรัล การเร่งเวลาของ Made in Heaven ส่งผลให้ระยะเวลาหยุดเวลา 5 วินาทีของ Star Platinum ถูกบีบร่นเหลือเพียงเสี้ยววินาทีตามมิติเวลาภายนอก ทำให้โจทาโร่มีเวลาขยับตัวเพียงพริบตาเดียวและไม่สามารถปกป้องทั้งโจลีนและโจมตีพุชชี่ได้ทัน Made in Heaven ชนะขาดด้านอัตราเร่งความเร็ว
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. King Crimson -->
+        <div class="col-lg-6">
+          <div class="vs-matchup-card">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <h4 class="fw-bold text-white font-monospace mb-0">King Crimson</h4>
+                <small class="text-danger">ผู้ใช้: เดียวาโล (Diavolo) (Part 5)</small>
+              </div>
+              <span class="vs-badge-advantage"><i class="fa-solid fa-bolt me-1"></i> สปีดทำลายเอพิทาฟ</span>
+            </div>
+
+            <div class="p-2 rounded-3 mb-3 small font-monospace" style="background: rgba(0,0,0,0.5); border-left: 3px solid var(--blood-red);">
+              <span class="text-danger">แก่นพลัง:</span> การลบเวลา 10 วินาที + มองเห็นอนาคต (Epitaph)
+            </div>
+
+            <p class="text-secondary small mb-0" style="color: #cbd5e1 !important;">
+              <strong>ผลการปะทะ:</strong> แม้เดียวาโลจะลบเวลาหลบการโจมตีได้ แต่เพราะกาลเวลาทั้งจักรวาลกำลังเร่งขึ้น ระยะเวลา 10 วินาทีที่ลบไปจะถูกเผาผลาญหมดในเสี้ยวพริบตา เมื่อมิติเวลากลับสู่ปกติ ความเร็วระดับอนันต์ของพุชชี่จะพุ่งเข้าโจมตีก่อนที่เดียวาโลจะประมวลผลหรือตอบสนองทัน อีกทั้งภาพพยากรณ์ของเอพิทาฟจะเคลื่อนที่เร็วเกินสายตามนุษย์จะอ่านทัน
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Killer Queen: Bites the Dust -->
+        <div class="col-lg-6">
+          <div class="vs-matchup-card">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <h4 class="fw-bold text-white font-monospace mb-0">Killer Queen: Bites the Dust</h4>
+                <small class="text-info">ผู้ใช้: คิระ โยชิคาเงะ (Part 4)</small>
+              </div>
+              <span class="vs-badge-advantage"><i class="fa-solid fa-arrows-spin me-1"></i> เร่งข้ามมิติลูป</span>
+            </div>
+
+            <div class="p-2 rounded-3 mb-3 small font-monospace" style="background: rgba(0,0,0,0.5); border-left: 3px solid #e879f9;">
+              <span style="color:#e879f9;">แก่นพลัง:</span> ระเบิดย้อนเวลา 1 ชั่วโมงเพื่อล็อกชะตากรรมสังหาร
+            </div>
+
+            <p class="text-secondary small mb-0" style="color: #cbd5e1 !important;">
+              <strong>ผลการปะทะ:</strong> ไบท์ส เดอะ ดัสต์ ส่งผลเฉพาะจุดและต้องอาศัยเงื่อนไขการเปิดเผยตัวตนผ่านร่างพาหะ แต่ Made in Heaven ส่งผลกระทบระดับมหาภพทั้งจักรวาล หากพุชชี่เร่งเวลาสู่จุดซิงกูลาริตี้ ลูปเวลา 1 ชั่วโมงของคิระจะถูกแรงโน้มถ่วงมิติกลืนกินและพัดพาไปข้างหน้าอย่างรวดเร็วจนกฎการวนลูปแตกสลาย
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Gold Experience Requiem (GER) -->
+        <div class="col-lg-6">
+          <div class="vs-matchup-card" style="border: 2px solid var(--gold-jojo); background: linear-gradient(145deg, rgba(28, 20, 10, 0.9) 0%, rgba(14, 10, 24, 0.9) 100%);">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <h4 class="fw-bold text-warning font-monospace mb-0">Gold Experience Requiem</h4>
+                <small class="text-warning">ผู้ใช้: โจรูโน่ โจบาน่า (Part 5)</small>
+              </div>
+              <span class="vs-badge-counter"><i class="fa-solid fa-shield-halved me-1"></i> ULTIMATE COUNTER</span>
+            </div>
+
+            <div class="p-2 rounded-3 mb-3 small font-monospace" style="background: rgba(0,0,0,0.6); border-left: 3px solid var(--gold-jojo);">
+              <span class="text-warning">แก่นพลัง:</span> การหวนคืนสู่ศูนย์ (Return to Zero) ก้าวข้ามกฎแห่งเหตุและผล
+            </div>
+
+            <p class="text-light small mb-0" style="color: #f8fafc !important;">
+              <strong>ข้อถกเถียงอันดับ 1 ของแฟน JoJo:</strong> GER ไม่ได้ควบคุมมิติเวลา แต่ควบคุม "เจตจำนงและสัจธรรม (Causality)" หากพุชชี่เร่งเวลาและส่งผลอันตรายต่อโจรูโน่ GER จะปฏิเสธการกระทำนั้นและรีเซ็ตทุกสิ่งกลับสู่จุดเริ่มต้น (Zero) ทันที แฟนๆ จึงยกให้ <strong>GER เป็นสแตนด์เดียวในอนิเมะที่สามารถสยบ Made in Heaven ได้อย่างสมบูรณ์แบบ</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verdict Box -->
+      <div class="p-3 rounded-4" style="background: rgba(0, 0, 0, 0.6); border: 1px dashed var(--cyan-energy);">
+        <div class="d-flex align-items-center gap-2 text-warning fw-bold small font-monospace mb-1">
+          <i class="fa-solid fa-scale-balanced text-info"></i> VERDICT: บทสรุปสเกลพลังแห่งมิติเวลา
+        </div>
+        <p class="text-secondary small mb-0" style="color: #cbd5e1 !important;">
+          ในบรรดาสแตนด์สายกาลเวลาทั้งหมด (Time Manipulators) <strong>Made in Heaven ครองอันดับ 1 ในด้านความเร็วและขอบเขตอิทธิพล (Universal Scale)</strong> เหนือกว่าทั้งการหยุดเวลาและการลบเวลา โดยมีเพียงสแตนด์สายบงการสัจธรรมอย่าง <strong>Gold Experience Requiem</strong> เท่านั้นที่อยู่เหนือกฎเกณฑ์นี้
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Weakness & Defeat (The Singularity Overturned) -->
   <section class="mb-4">
     <div class="jojo-chamfer-card" style="border: 2px solid rgba(255, 0, 85, 0.55); background: linear-gradient(180deg, rgba(32, 10, 24, 0.95) 0%, rgba(10, 5, 15, 0.95) 100%);">
       <span class="hud-reticle-tl">FATAL_FLAW // DOWNFALL</span>
@@ -772,7 +932,7 @@
         <span class="section-god-icon" style="background: linear-gradient(135deg, #ff0055 0%, #88002b 100%); border-color: #ff0055;">
           <i class="fa-solid fa-skull text-white"></i>
         </span>
-        <span>5. จุดอ่อนและจุดอวสานแห่งสรวงสวรรค์ (The Fall of Pucci)</span>
+        <span>6. จุดอ่อนและจุดอวสานแห่งสรวงสวรรค์ (The Fall of Pucci)</span>
       </h2>
 
       <div class="row g-4 mt-1">
