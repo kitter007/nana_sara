@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Made in Heaven - เทคโนโลยีสารสนเทศ 2/1</title>
+  <title>MADE IN HEAVEN - JoJo Part 6: Stone Ocean</title>
 
-  <!-- Google Fonts: Prompt & Cinzel -->
+  <!-- Google Fonts: Cinzel Decorative, Dela Gothic One (Manga Bold), Prompt -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;800&family=Dela+Gothic+One&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,18 +18,24 @@
 
   <style>
     :root {
-      --primary-cosmic: #4f46e5;
-      --secondary-cosmic: #7c3aed;
-      --accent-gold: #f59e0b;
-      --bg-surface: #f8fafc;
-      --card-bg: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
+      --jojo-gold: #f6c445;
+      --jojo-gold-glow: rgba(246, 196, 69, 0.4);
+      --cosmic-purple: #9d4edd;
+      --deep-space: #090814;
+      --space-card: rgba(18, 16, 38, 0.85);
+      --space-border: rgba(157, 78, 221, 0.25);
+      --neon-cyan: #00f0ff;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
     }
 
     body {
       font-family: 'Prompt', sans-serif;
-      background-color: var(--bg-surface);
+      background-color: var(--deep-space);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(123, 44, 191, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(246, 196, 69, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.05) 0%, transparent 50%);
       color: var(--text-main);
       overflow-x: hidden;
       line-height: 1.7;
@@ -37,9 +43,10 @@
 
     /* Navbar */
     .navbar {
-      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%) !important;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      background: rgba(9, 8, 20, 0.9) !important;
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(246, 196, 69, 0.25);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.7);
     }
 
     /* Sidebar desktop */
@@ -49,10 +56,10 @@
       position: fixed;
       top: 56px;
       left: 0;
-      background: #0f172a;
+      background: #0d0b1a;
       padding-top: 15px;
       z-index: 1000;
-      border-right: 1px solid rgba(255,255,255,0.08);
+      border-right: 1px solid rgba(157, 78, 221, 0.2);
       transition: all 0.3s ease;
     }
 
@@ -60,197 +67,253 @@
       color: #94a3b8;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       padding: 12px 20px;
       text-decoration: none;
       font-size: 0.95rem;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
+      border-left: 3px solid transparent;
     }
 
     .sidebar a:hover, .sidebar a.active {
-      color: #ffffff;
-      background: rgba(99, 102, 241, 0.15);
-      border-left: 4px solid var(--secondary-cosmic);
+      color: var(--jojo-gold);
+      background: linear-gradient(90deg, rgba(157,78,221,0.2) 0%, transparent 100%);
+      border-left: 3px solid var(--jojo-gold);
       padding-left: 24px;
+      text-shadow: 0 0 10px var(--jojo-gold-glow);
     }
 
     /* Content Area */
     .content {
       margin-left: 250px;
-      padding: 40px 30px;
+      padding: 30px 25px 60px;
       margin-top: 56px;
-      max-width: 1200px;
+      max-width: 1240px;
     }
 
-    /* Hero Banner */
-    .hero-banner {
-      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-      border-radius: 24px;
-      padding: 40px;
+    /* Ticker Tape (14 Words of DIO) */
+    .dio-ticker-wrap {
+      background: linear-gradient(90deg, #1b0e36 0%, #2a144e 50%, #1b0e36 100%);
+      border: 1px solid var(--space-border);
+      border-radius: 8px;
+      overflow: hidden;
+      white-space: nowrap;
+      box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
+      margin-bottom: 30px;
+    }
+
+    .dio-ticker {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 35s linear infinite;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: var(--jojo-gold);
+    }
+
+    @keyframes ticker {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
+    }
+
+    /* Menacing Japanese Katakana Float (ゴゴゴゴ) */
+    .menacing-text {
+      font-family: 'Dela Gothic One', cursive;
+      color: #9d4edd;
+      opacity: 0.35;
+      letter-spacing: 5px;
+      user-select: none;
+      text-shadow: 0 0 15px rgba(157, 78, 221, 0.6);
+      animation: menacingPulse 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes menacingPulse {
+      0% { transform: translateY(0px) scale(1); opacity: 0.25; }
+      100% { transform: translateY(-4px) scale(1.04); opacity: 0.5; }
+    }
+
+    /* JoJo Stand Eyecatch Banner */
+    .jojo-eyecatch {
+      background: linear-gradient(135deg, rgba(22, 18, 48, 0.95) 0%, rgba(13, 11, 28, 0.95) 100%);
+      border: 1px solid var(--space-border);
+      border-radius: 22px;
+      padding: 35px;
       position: relative;
       overflow: hidden;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(157, 78, 221, 0.15);
     }
 
-    .hero-banner::after {
-      content: '';
+    /* Reticle corner decoration */
+    .jojo-eyecatch::before, .jojo-eyecatch::after {
+      content: "[ + ]";
       position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, rgba(255,255,255,0) 70%);
-      border-radius: 50%;
-      pointer-events: none;
+      font-family: monospace;
+      color: var(--jojo-gold);
+      font-size: 13px;
+      opacity: 0.6;
+    }
+    .jojo-eyecatch::before { top: 12px; left: 15px; }
+    .jojo-eyecatch::after { bottom: 12px; right: 15px; }
+
+    .stand-header-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      color: var(--jojo-gold);
+      text-transform: uppercase;
+      font-weight: 800;
     }
 
-    .stand-title {
-      font-family: 'Cinzel', serif;
-      font-size: 2.8rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 50%, #7c3aed 100%);
+    .stand-main-title {
+      font-family: 'Cinzel Decorative', 'Cinzel', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #ffffff 0%, var(--jojo-gold) 60%, #e0a500 100%);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: 0.5px;
+      text-shadow: 0 0 30px rgba(246, 196, 69, 0.3);
+      line-height: 1.15;
     }
 
-    /* Cards & Containers */
-    .content-card {
-      background: var(--card-bg);
+    .stand-katakana {
+      font-family: 'Dela Gothic One', cursive;
+      font-size: 1.25rem;
+      color: #c4b5fd;
+      letter-spacing: 3px;
+    }
+
+    /* Glass Cards */
+    .jojo-card {
+      background: var(--space-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--space-border);
       border-radius: 20px;
-      padding: 30px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.04);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      height: 100%;
+      padding: 26px;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
-    .content-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 35px -10px rgba(79, 70, 229, 0.08);
+    .jojo-card:hover {
+      border-color: rgba(246, 196, 69, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(157, 78, 221, 0.25);
     }
 
-    /* Section Headings */
-    .section-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #1e293b;
+    /* Section Headers */
+    .jojo-section-title {
+      font-family: 'Cinzel', 'Prompt', serif;
+      font-weight: 800;
+      font-size: 1.45rem;
+      color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      letter-spacing: 0.5px;
       margin-bottom: 24px;
+      border-bottom: 1px solid rgba(157, 78, 221, 0.3);
+      padding-bottom: 14px;
     }
 
-    .section-title i {
-      color: var(--secondary-cosmic);
-      background: #ede9fe;
-      width: 42px;
-      height: 42px;
+    .jojo-section-title i {
+      color: var(--jojo-gold);
+      background: rgba(246, 196, 69, 0.12);
+      width: 44px;
+      height: 44px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 12px;
-      font-size: 1.1rem;
+      border: 1px solid rgba(246, 196, 69, 0.3);
+      box-shadow: 0 0 15px var(--jojo-gold-glow);
     }
 
-    /* Evolution Stepper */
-    .evolution-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      background: #f1f5f9;
-      color: #334155;
-      font-weight: 600;
-      border-radius: 30px;
-      font-size: 0.85rem;
-    }
-
-    .evo-step-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
+    /* Evolution Stages */
+    .evo-card {
+      background: rgba(20, 16, 43, 0.9);
+      border: 1px solid rgba(157, 78, 221, 0.25);
       border-radius: 16px;
-      padding: 20px;
+      padding: 22px;
+      height: 100%;
       position: relative;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
     }
 
-    .evo-step-card.active {
-      background: linear-gradient(135deg, #faf5ff 0%, #f5f3ff 100%);
-      border-color: #c4b5fd;
-      box-shadow: 0 8px 25px -5px rgba(124, 58, 237, 0.15);
+    .evo-card.ultimate {
+      background: linear-gradient(145deg, rgba(38, 20, 77, 0.9) 0%, rgba(18, 12, 40, 0.9) 100%);
+      border: 1px solid var(--jojo-gold);
+      box-shadow: 0 0 25px rgba(246, 196, 69, 0.2);
+    }
+
+    .phase-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 1px;
     }
 
     /* Media Frames */
-    .media-frame {
+    .cosmic-frame {
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 12px 30px -8px rgba(0,0,0,0.12);
-      border: 3px solid #ffffff;
-      transition: transform 0.3s ease;
+      border: 2px solid rgba(157, 78, 221, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(157, 78, 221, 0.2);
+      background: #000;
     }
 
-    .media-frame:hover {
-      transform: scale(1.01);
-    }
-
-    .media-frame img {
+    .cosmic-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.4s ease;
     }
 
-    /* Stand Stats Pill */
-    .stat-pill {
+    .cosmic-frame:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Stand Stats Table */
+    .stand-stat-badge {
       display: inline-flex;
-      width: 38px;
-      height: 38px;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
+      width: 40px;
+      height: 40px;
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
       border-radius: 10px;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
     }
-    .stat-a { background: #dcfce7; color: #166534; }
-    .stat-b { background: #e0f2fe; color: #075985; }
-    .stat-c { background: #fef9c3; color: #854d0e; }
-    .stat-inf { background: #f3e8ff; color: #6b21a8; font-size: 1.3rem; box-shadow: 0 0 12px rgba(168,85,247,0.4); }
+    .stat-rank-a { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid #22c55e; }
+    .stat-rank-b { background: rgba(14, 165, 233, 0.15); color: #38bdf8; border: 1px solid #0ea5e9; }
+    .stat-rank-c { background: rgba(246, 196, 69, 0.15); color: #fde047; border: 1px solid #eab308; }
+    .stat-rank-inf { 
+      background: rgba(168, 85, 247, 0.25); 
+      color: #c084fc; 
+      border: 1px solid #a855f7; 
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+      font-size: 1.4rem;
+    }
 
-    /* Custom Table */
-    .custom-table {
-      border-collapse: separate;
-      border-spacing: 0 10px;
+    .jojo-table tr {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .custom-table tr {
-      background: #ffffff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      border-radius: 12px;
+    .jojo-table td, .jojo-table th {
+      padding: 16px 12px;
+      vertical-align: middle;
+      color: #cbd5e1;
     }
-    .custom-table td, .custom-table th {
-      border: none;
-      padding: 14px 18px;
-    }
-    .custom-table tr td:first-child { border-radius: 12px 0 0 12px; }
-    .custom-table tr td:last-child { border-radius: 0 12px 12px 0; }
 
     /* Mobile */
     @media (max-width: 768px) {
-      .sidebar {
-        left: -250px;
-      }
-      .sidebar.active {
-        left: 0;
-      }
-      .content {
-        margin-left: 0;
-        padding: 20px 15px;
-      }
-      .stand-title {
-        font-size: 2.1rem;
-      }
+      .sidebar { left: -250px; }
+      .sidebar.active { left: 0; }
+      .content { margin-left: 0; padding: 20px 15px; }
     }
   </style>
 </head>
@@ -260,12 +323,16 @@
 <nav class="navbar navbar-dark fixed-top">
   <div class="container-fluid">
     <div class="d-flex align-items-center">
-      <button class="btn btn-outline-light btn-sm me-3 px-3 py-2 rounded-3" onclick="toggleSidebar()" aria-label="เปิดเมนู">
+      <button class="btn btn-outline-warning btn-sm me-3 px-3 py-2 rounded-3" onclick="toggleSidebar()" aria-label="เปิดเมนู">
         <i class="fa-solid fa-bars"></i>
       </button>
-      <span class="navbar-brand mb-0 fw-semibold fs-5 tracking-wide">
-        <i class="fa-solid fa-laptop-code me-2"></i>เทคโนโลยีสารสนเทศ 2/1
+      <span class="navbar-brand mb-0 fw-bold fs-5 tracking-wide" style="font-family: 'Cinzel', 'Prompt', sans-serif;">
+        <i class="fa-solid fa-star text-warning me-2"></i>เทคโนโลยีสารสนเทศ 2/1
       </span>
+    </div>
+    <div class="d-none d-md-flex align-items-center gap-2 text-warning small font-monospace">
+      <i class="fa-solid fa-cross"></i>
+      <span>HEAVEN PLAN // STAGE III</span>
     </div>
   </div>
 </nav>
@@ -275,7 +342,7 @@
   <a href="index.html"><i class="fa-solid fa-house"></i> หน้าแรก</a>
   <a href="pongsapat.html"><i class="fa-solid fa-user"></i> pongsapat</a>
   <a href="kittipron.html"><i class="fa-solid fa-user"></i> กิตติพร สินนุรักษ์กูล</a>
-  <a href="M_Aunew.html"><i class="fa-solid fa-user-astronaut"></i> เอ็ม (ชีวประวัติ)</a>
+  <a href="M_Aunew.html"><i class="fa-solid fa-user-astronaut"></i> พระมหารังสิตมหิดลบรมวงค์เธอฯ</a>
   <a href="grammychibi.html" class="active"><i class="fa-solid fa-infinity text-warning"></i> 14 ศรายุทธ โพธิ์ทรง</a>
   <hr class="border-secondary my-2 mx-3 opacity-25">
   <a href="#"><i class="fa-regular fa-folder"></i> Menu 2</a>
@@ -286,42 +353,54 @@
 <!-- Main Content Area -->
 <div class="content">
 
-  <!-- Hero Stand Intro -->
-  <section class="hero-banner mb-5">
+  <!-- DIO's 14 Words Ticker -->
+  <div class="dio-ticker-wrap">
+    <div class="dio-ticker">
+      ✦ SPIRAL STAIRCASE (螺旋階段) ✦ RHINOCEROS BEETLE (カブト虫) ✦ DESOLATION ROW (廃墟の街) ✦ FIG TART (イチジクのタルト) ✦ RHINOCEROS BEETLE ✦ VIA DOLOROSA (ドロローサへの道) ✦ RHINOCEROS BEETLE ✦ SINGULARITY POINT (特異点) ✦ GIOTTO (ジョット) ✦ ANGEL (天使) ✦ HYDRANGEA (紫陽花) ✦ RHINOCEROS BEETLE ✦ SINGULARITY POINT ✦ SECRET EMPEROR (秘密の皇帝) ✦
+    </div>
+  </div>
+
+  <!-- Stand Eyecatch Hero Banner -->
+  <section class="jojo-eyecatch mb-5">
     <div class="row align-items-center g-4">
       <div class="col-lg-7">
-        <div class="d-flex flex-wrap gap-2 mb-3">
-          <span class="badge bg-dark bg-opacity-75 px-3 py-2 rounded-pill">
-            <i class="fa-solid fa-book-open text-warning me-1"></i> Part 6: Stone Ocean
+        <div class="d-flex align-items-center gap-3 mb-2">
+          <span class="stand-header-tag">STAND PROFILE // PART 6 STONE OCEAN</span>
+          <span class="menacing-text ms-auto fs-5">ゴゴゴゴ</span>
+        </div>
+
+        <h1 class="stand-main-title mb-0">MADE IN HEAVEN</h1>
+        <div class="stand-katakana mb-3">メイド・イン・ヘブン</div>
+
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <span class="badge bg-black bg-opacity-60 text-warning border border-warning-subtle px-3 py-2 rounded-pill font-monospace">
+            <i class="fa-solid fa-cross me-1"></i> MASTER: ENRICO PUCCI
           </span>
-          <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill border border-primary-subtle">
-            <i class="fa-solid fa-cross me-1"></i> บาทหลวง เอ็นริโก้ พุชชี่
+          <span class="badge bg-black bg-opacity-60 text-info border border-info-subtle px-3 py-2 rounded-pill font-monospace">
+            <i class="fa-solid fa-gauge-high me-1"></i> SPEED: INFINITE (∞)
           </span>
-          <span class="badge bg-purple px-3 py-2 rounded-pill" style="background:#ede9fe; color:#6d28d9;">
-            <i class="fa-solid fa-crown me-1"></i> Ultimate Stand
+          <span class="badge bg-purple px-3 py-2 rounded-pill" style="background: rgba(168,85,247,0.25); color:#d8b4fe; border: 1px solid #9333ea;">
+            <i class="fa-solid fa-infinity me-1"></i> SINGULARITY OVERWRITE
           </span>
         </div>
-        
-        <h1 class="stand-title mb-2">MADE IN HEAVEN</h1>
-        <h4 class="text-secondary fw-semibold mb-3">เมด อิน เฮฟเว่น</h4>
-        
-        <p class="lead text-muted fs-6 mb-4">
-          ผลลัพธ์สูงสุดของ <strong>"แผนการสู่สรวงสวรรค์" (Heaven Plan)</strong> ตามสมุดบันทึกของ DIO สแตนด์ที่ครอบครองความเร็วระดับอนันต์ และความสามารถในการเร่งเวลาของเอกภพจนนำไปสู่การรีเซ็ตจักรวาล
+
+        <p class="text-secondary mb-4" style="color: #cbd5e1 !important; font-size: 1.05rem;">
+          จุดสูงสุดของ <strong>"แผนการสู่สรวงสวรรค์" (Heaven Plan)</strong> สแตนด์ร่างสุดท้ายของบาทหลวงพุชชี่ที่ถูกถอดรหัสจากสมุดบันทึกของ DIO การหลอมรวมกฎแรงโน้มถ่วง มิติ และเวลา จนผลักดันประวัติศาสตร์จักรวาลเข้าสู่ความเร็วสัมบูรณ์ไร้ขีดจำกัด
         </p>
 
-        <div class="d-flex align-items-center gap-3 p-3 bg-white rounded-4 border shadow-sm">
-          <div class="p-3 bg-warning bg-opacity-10 text-warning rounded-circle">
-            <i class="fa-solid fa-feather-pointed fs-4"></i>
+        <!-- Pucci Gravity Quote Box -->
+        <div class="p-3 rounded-3" style="background: rgba(10, 8, 24, 0.8); border-left: 4px solid var(--jojo-gold); border-top: 1px solid rgba(255,255,255,0.05);">
+          <div class="small text-warning fw-bold font-monospace mb-1">
+            <i class="fa-solid fa-quote-left me-1"></i> ENRICO PUCCI'S CREED
           </div>
-          <div class="small">
-            <span class="d-block fw-bold text-dark">ปรัชญาแห่งสรวงสวรรค์</span>
-            <span class="text-muted">"การยอมรับและรู้ชะตากรรมล่วงหน้า คือความสุขที่แท้จริงของมนุษยชาติ"</span>
+          <div class="fst-italic text-light" style="font-size: 0.95rem;">
+            "君は『引力』を信じるか？... การได้ล่วงรู้ชะตากรรมของตนเองล่วงหน้า คือความสงบสุขที่แท้จริงของมนุษย์ และนั่นคือ 'สวรรค์' ที่ข้าจะมอบให้แก่โลก"
           </div>
         </div>
       </div>
 
       <div class="col-lg-5">
-        <div class="media-frame" style="height: 310px;">
+        <div class="cosmic-frame" style="height: 320px;">
           <img src="img/7j8c3dvs4wtf1.gif" alt="Made in Heaven" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=800&auto=format&fit=crop';">
         </div>
       </div>
@@ -330,81 +409,104 @@
 
   <!-- 1. Evolution Section -->
   <section class="mb-5">
-    <h3 class="section-title">
-      <i class="fa-solid fa-dna"></i>
-      <span>1. จุดกำเนิดและวิวัฒนาการ (Evolution)</span>
-    </h3>
-    <p class="text-muted mb-4">สแตนด์ไม่ได้เกิดขึ้นในทันที แต่ผ่านการเชื่อมโยงวิญญาณและเงื่อนไขทางดาราศาสตร์อย่างประณีต 3 ขั้นตอน:</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <h3 class="jojo-section-title w-100">
+        <i class="fa-solid fa-dna"></i>
+        <span>1. จุดกำเนิดและวิวัฒนาการ 3 ขั้นตอน (Evolution of Heaven)</span>
+        <span class="menacing-text ms-auto d-none d-md-inline fs-5">ドドドド</span>
+      </h3>
+    </div>
 
-    <div class="row g-3 mb-4">
+    <div class="row g-4 mb-4">
       <div class="col-md-4">
-        <div class="evo-step-card h-100">
+        <div class="evo-card">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <span class="evolution-badge"><i class="fa-solid fa-1"></i> ร่างแรก</span>
-            <i class="fa-solid fa-compact-disc text-secondary fs-4"></i>
+            <span class="phase-tag bg-secondary bg-opacity-25 text-light border border-secondary">PHASE 01 : ANIMA</span>
+            <i class="fa-solid fa-compact-disc text-secondary fs-3"></i>
           </div>
-          <h5 class="fw-bold text-dark">Whitesnake</h5>
-          <p class="text-muted small mb-0">ความสามารถในการถอดดวงวิญญาณและความทรงจำของสิ่งมีชีวิตออกมาในรูปแบบ "แผ่นดิสก์ (DISC)" เพื่อควบคุมและแย่งชิงพลังสแตนด์ผู้อื่น</p>
+          <h4 class="fw-bold text-white mb-1" style="font-family: 'Cinzel', sans-serif;">Whitesnake</h4>
+          <span class="text-muted small d-block mb-3">ไวท์สเน็ค (ร่างแรก)</span>
+          <p class="text-secondary small mb-0" style="color: #94a3b8 !important;">
+            สแตนด์ระยะไกล สกัดวิญญาณและความทรงจำออกมาเป็นแผ่น <strong>DISC</strong> เพื่อช่วงชิงพลังสแตนด์ผู้อื่น เป็นจุดตั้งต้นในการเสาะหาความทรงจำของ DIO ที่อยู่ในสมองของโจทาโร่
+          </p>
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="evo-step-card h-100">
+        <div class="evo-card">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <span class="evolution-badge"><i class="fa-solid fa-2"></i> ร่างสอง</span>
-            <i class="fa-solid fa-arrows-to-circle text-primary fs-4"></i>
+            <span class="phase-tag bg-primary bg-opacity-25 text-info border border-info">PHASE 02 : GRAVITAS</span>
+            <i class="fa-solid fa-arrows-to-circle text-info fs-3"></i>
           </div>
-          <h5 class="fw-bold text-dark">C-Moon</h5>
-          <p class="text-muted small mb-0">เกิดจากการหลอมรวมกับ <em>Green Baby</em> มอบอำนาจควบคุมแรงโน้มถ่วงกลับหัวรอบทิศทาง 3 กิโลเมตร และทำให้พื้นผิวร่างกายฝ่ายตรงข้ามพลิกกลับด้าน</p>
+          <h4 class="fw-bold text-white mb-1" style="font-family: 'Cinzel', sans-serif;">C-Moon</h4>
+          <span class="text-muted small d-block mb-3">ซี-มูน (ร่างควบคุมแรงดึงดูด)</span>
+          <p class="text-secondary small mb-0" style="color: #94a3b8 !important;">
+            กำเนิดจากการหลอมรวมกับ <strong>Green Baby</strong> สามารถบิดเบือนกฎแรงโน้มถ่วงในรัศมี 3 กม. และพลิกร่างกายศัตรูจากข้างในออกสู่ภายนอกด้วยแรงสัมผัส
+          </p>
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="evo-step-card active h-100">
+        <div class="evo-card ultimate">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <span class="evolution-badge" style="background:#ddd6fe; color:#5b21b6;"><i class="fa-solid fa-3"></i> ร่างสมบูรณ์</span>
-            <i class="fa-solid fa-infinity text-purple fs-4" style="color:#7c3aed;"></i>
+            <span class="phase-tag bg-warning bg-opacity-25 text-warning border border-warning">PHASE 03 : CAELUM</span>
+            <i class="fa-solid fa-infinity text-warning fs-3"></i>
           </div>
-          <h5 class="fw-bold text-dark">Made in Heaven</h5>
-          <p class="text-muted small mb-0">ถือกำเนิดขึ้นเมื่อเข้าสู่พิกัดแรงโน้มถ่วงที่ศูนย์อวกาศเคนเนดีในคืนวันพระจันทร์ดับ เร่งเวลาจนถึงจุดสูงสุดของชะตากรรมจักรวาล</p>
+          <h4 class="fw-bold text-warning mb-1" style="font-family: 'Cinzel', sans-serif;">Made in Heaven</h4>
+          <span class="text-warning-emphasis small d-block mb-3">เมด อิน เฮฟเว่น (ร่างสมบูรณ์)</span>
+          <p class="text-light small mb-0" style="color: #e2e8f0 !important;">
+            บรรลุเงื่อนไขดาราศาสตร์ ณ ศูนย์อวกาศเคนเนดีในคืนวันเพ็ญดับ เปลี่ยนแรงโน้มถ่วงทั้งมิติให้กลายเป็นการเร่งเวลาอนันต์เพื่อรีเซ็ตจักรวาล
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="media-frame" style="max-height: 420px;">
+    <div class="cosmic-frame" style="max-height: 400px;">
       <img src="img/Pucci_achieves_Made_in_Heaven_4k_60fps_Jojo_s_Bizzare_Adventure_Stone_Ocean_Part_6.gif" alt="ขั้นตอนการวิวัฒนาการ" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop';">
     </div>
   </section>
 
   <!-- 2. Appearance & Name Origin -->
   <section class="mb-5">
-    <div class="content-card">
-      <h3 class="section-title">
+    <div class="jojo-card">
+      <h3 class="jojo-section-title">
         <i class="fa-solid fa-compass-drafting"></i>
-        <span>2. รูปลักษณ์และที่มาของชื่อ (Appearance & Name Origin)</span>
+        <span>2. รูปลักษณ์และที่มาของชื่อ (Appearance & Music Reference)</span>
       </h3>
-      
+
       <div class="row align-items-center g-4">
         <div class="col-lg-7">
           <div class="d-flex gap-3 mb-4">
-            <div class="mt-1"><i class="fa-solid fa-horse text-primary fs-5"></i></div>
+            <div class="mt-1">
+              <span class="p-2 rounded-3 bg-warning bg-opacity-10 text-warning border border-warning-subtle d-inline-block">
+                <i class="fa-solid fa-horse-head fs-4"></i>
+              </span>
+            </div>
             <div>
-              <h6 class="fw-bold mb-1">สรีระครึ่งคนครึ่งม้า (Centaur Aesthetic)</h6>
-              <p class="text-muted mb-0">ท่อนบนเป็นเทวทูตสีขาว ท่อนล่างผสานเข้ากับหัวม้าอย่างงดงาม ประดับด้วยหน้าปัดนาฬิกาตามตัว เป็นสัญลักษณ์แห่งการวิ่งไปข้างหน้าอย่างไม่หยุดยั้งของเวลาและมิติ</p>
+              <h5 class="fw-bold text-white mb-1">เทวทูตครึ่งคนครึ่งม้า (Celestial Centaur)</h5>
+              <p class="text-secondary small mb-0" style="color: #94a3b8 !important;">
+                สรีระท่อนบนเป็นเทวทูตสีขาวบริสุทธิ์ ท่อนล่างและส่วนหน้าผสานเป็นม้าศึก สื่อถึงการควบทะยานไปข้างหน้าของกาลเวลาอย่างไม่หยุดยั้ง พร้อมหน้าปัดนาฬิกาตามเรือนร่างที่นับถอยหลังสู่จุดสิ้นสุดของเอกภพ
+              </p>
             </div>
           </div>
 
-          <div class="d-flex gap-3 mb-4">
-            <div class="mt-1"><i class="fa-solid fa-music text-warning fs-5"></i></div>
+          <div class="d-flex gap-3">
+            <div class="mt-1">
+              <span class="p-2 rounded-3 bg-purple bg-opacity-25 text-info border border-info-subtle d-inline-block" style="background: rgba(157, 78, 221, 0.2);">
+                <i class="fa-solid fa-record-vinyl fs-4 text-warning"></i>
+              </span>
+            </div>
             <div>
-              <h6 class="fw-bold mb-1">เกียรติประวัติวง Queen & Led Zeppelin</h6>
-              <p class="text-muted mb-0">ชื่อสแตนด์นำมาจากสตูดิโออัลบั้มสุดท้ายของวงร็อกระดับตำนานอย่าง <strong>Queen (1995)</strong> โดยในนิตยสาร Shonen Jump ฉบับแรกเคยใช้ชื่อ <em>Stairway to Heaven</em> ก่อนจะเปลี่ยนชื่อเพื่อความลงตัว</p>
+              <h5 class="fw-bold text-white mb-1">เกียรติประวัติวง Queen & Led Zeppelin</h5>
+              <p class="text-secondary small mb-0" style="color: #94a3b8 !important;">
+                ตั้งชื่อตามสตูดิโออัลบั้มลำดับสุดท้ายของ <strong>Queen (1995)</strong> หลังการจากไปของ Freddie Mercury โดยในนิตยสารรายสัปดาห์ <em>Shonen Jump</em> อ.อารากิเคยใช้ชื่อว่า <strong>Stairway to Heaven</strong> (ของ Led Zeppelin) ก่อนจะเปลี่ยนเป็น Made in Heaven ในฉบับรวมเล่ม
+              </p>
             </div>
           </div>
         </div>
 
         <div class="col-lg-5">
-          <div class="media-frame" style="height: 240px;">
+          <div class="cosmic-frame" style="height: 250px;">
             <img src="img/tumblr_f5ddce3fd9051ca4ad828c37beed14d7_417fec34_500.gif" alt="รูปลักษณ์สแตนด์" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop';">
           </div>
         </div>
@@ -412,122 +514,155 @@
     </div>
   </section>
 
-  <!-- 3. Abilities & Mechanics -->
+  <!-- 3. Abilities & Mechanics (Bento Grid) -->
   <section class="mb-5">
-    <h3 class="section-title">
-      <i class="fa-solid fa-bolt-lightning"></i>
-      <span>3. เจาะลึกความสามารถ (Abilities & Mechanics)</span>
+    <h3 class="jojo-section-title">
+      <i class="fa-solid fa-hourglass-start"></i>
+      <span>3. กลไกพลังสัมบูรณ์ (Universal Time Acceleration)</span>
+      <span class="menacing-text ms-auto d-none d-md-inline fs-5">ゴゴゴゴ</span>
     </h3>
-    <p class="text-muted mb-4">แก่นแท้ของพลังคือ <strong>"การเร่งเวลาสากลระดับไร้ขีดจำกัด" (Universal Time Acceleration)</strong> ที่อาศัยแรงดึงดูดเชื่อมต่อกับกระแสเวลาของมิติ:</p>
 
-    <!-- Bento Grid Abilities -->
     <div class="row g-3 mb-4">
       <div class="col-md-6">
-        <div class="content-card">
-          <div class="d-flex align-items-center gap-3 mb-2">
-            <span class="badge bg-primary bg-opacity-10 text-primary p-2 rounded-3"><i class="fa-solid fa-clock-rotate-left fs-5"></i></span>
-            <h5 class="fw-bold mb-0">การเร่งเวลาของสิ่งไม่มีชีวิต</h5>
+        <div class="jojo-card h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="p-2 rounded-3" style="background: rgba(0, 240, 255, 0.15); color: var(--neon-cyan); border: 1px solid var(--neon-cyan);">
+              <i class="fa-solid fa-clock-rotate-left fs-4"></i>
+            </div>
+            <h5 class="fw-bold text-white mb-0">การเร่งเวลาของสิ่งไม่มีชีวิต</h5>
           </div>
-          <p class="text-muted small mb-0">สิ่งของ เทคโนโลยี สภาพอากาศ ดวงอาทิตย์ และดวงจันทร์โคจรด้วยความเร็วเหนือจินตนาการ แต่ร่างกายของสิ่งมีชีวิตจะไม่ถูกเร่งตาม ทำให้รับมือกับสภาพแวดล้อมที่เปลี่ยนแปลงรวดเร็วไม่ทัน</p>
+          <p class="text-secondary small mb-0" style="color: #cbd5e1 !important;">
+            สิ่งไม่มีชีวิต รถยนต์ อาวุธ สภาพอากาศ การโคจรของดาวฤกษ์จะหมุนเร็วขึ้นนับล้านเท่า แต่สิ่งมีชีวิตจะไม่ถูกเร่งตาม ทำให้โลกหมุนเร็วจนมนุษย์ไม่สามารถตอบสนองหรือดำรงชีวิตได้ทันท่วงที
+          </p>
         </div>
       </div>
 
       <div class="col-md-6">
-        <div class="content-card">
-          <div class="d-flex align-items-center gap-3 mb-2">
-            <span class="badge bg-success bg-opacity-10 text-success p-2 rounded-3"><i class="fa-solid fa-gauge-high fs-5"></i></span>
-            <h5 class="fw-bold mb-0">ความเร็วสัมบูรณ์ของพุชชี่</h5>
+        <div class="jojo-card h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="p-2 rounded-3" style="background: rgba(246, 196, 69, 0.15); color: var(--jojo-gold); border: 1px solid var(--jojo-gold);">
+              <i class="fa-solid fa-bolt-lightning fs-4"></i>
+            </div>
+            <h5 class="fw-bold text-white mb-0">ความเร็วสัมบูรณ์ (Infinite Speed)</h5>
           </div>
-          <p class="text-muted small mb-0">มีเพียงพุชชี่ที่ปรับจูนความเร็วคู่ขนานกับเวลาที่เร่งขึ้นได้ ทำให้เขามีความเร็วระดับอนันต์ (Infinite Speed) จนความสามารถหยุดเวลาของ Star Platinum ถูกร่นเวลาจนเหลือเพียงชั่วพริบตา</p>
+          <p class="text-secondary small mb-0" style="color: #cbd5e1 !important;">
+            มีเพียงพุชชี่เท่านั้นที่เคลื่อนไหวสอดคล้องกับเวลาที่เร่งขึ้น รวดเร็วจนเสมือนการเทเลพอร์ต และบีบให้ความสามารถหยุดเวลา 5 วินาทีของ <strong>Star Platinum</strong> ถูกร่นเหลือเพียงเสี้ยวพริบตา
+          </p>
         </div>
       </div>
 
       <div class="col-md-6">
-        <div class="content-card">
-          <div class="d-flex align-items-center gap-3 mb-2">
-            <span class="badge bg-purple bg-opacity-10 text-purple p-2 rounded-3" style="background:#f3e8ff; color:#7e22ce;"><i class="fa-solid fa-circle-notch fs-5"></i></span>
-            <h5 class="fw-bold mb-0">การรีเซ็ตจักรวาล (Universe Reset)</h5>
+        <div class="jojo-card h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="p-2 rounded-3" style="background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid #c084fc;">
+              <i class="fa-solid fa-circle-nodes fs-4"></i>
+            </div>
+            <h5 class="fw-bold text-white mb-0">การรีเซ็ตจักรวาล (Singularity Point)</h5>
           </div>
-          <p class="text-muted small mb-0">เมื่อเวลาเดินทางจนถึงจุดสิ้นสุดของเอกภพ (Singularity Point) จักรวาลจะสลายและก่อกำเนิดวัฏจักรใหม่อีกครั้ง โดยทุกสิ่งจะเริ่มต้นใหม่ตามลำดับเส้นเวลาเดิม</p>
+          <p class="text-secondary small mb-0" style="color: #cbd5e1 !important;">
+            เมื่อเวลาเดินทางสู่จุดสิ้นสุดของเอกภพ วัฏจักรเดิมจะดับลงและกำเนิดจักรวาลใหม่คู่ขนาน (Loop Rebirth) ที่มีโครงสร้างและลำดับประวัติศาสตร์เดิมทุกประการ
+          </p>
         </div>
       </div>
 
       <div class="col-md-6">
-        <div class="content-card">
-          <div class="d-flex align-items-center gap-3 mb-2">
-            <span class="badge bg-warning bg-opacity-10 text-warning p-2 rounded-3"><i class="fa-solid fa-eye fs-5"></i></span>
-            <h5 class="fw-bold mb-0">นิยามของสรวงสวรรค์ (Absolute Fate)</h5>
+        <div class="jojo-card h-100">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="p-2 rounded-3" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid #ef4444;">
+              <i class="fa-solid fa-eye fs-4"></i>
+            </div>
+            <h5 class="fw-bold text-white mb-0">การล่วงรู้ชะตากรรม (Absolute Fate)</h5>
           </div>
-          <p class="text-muted small mb-0">ในจักรวาลใหม่ มนุษย์ทุกคนจะล่วงรู้ชะตากรรมของตนเองตั้งแต่วันเกิดจนถึงวันตายโดยสัญชาตญาณ พุชชี่เชื่อว่านี่คือหนทางเดียวที่จะปลดปล่อยมนุษย์จากความกลัวในอนาคต</p>
+          <p class="text-secondary small mb-0" style="color: #cbd5e1 !important;">
+            มนุษย์ทุกคนที่ข้ามมาจักรวาลใหม่จะจดจำและรู้เหตุการณ์ล่วงหน้าในชีวิตตนเองได้โดยสัญชาตญาณ พุชชี่เชื่อว่าการหมดความเคลือบแคลงสงสัยในอนาคตคือความสุขอันสูงสุด
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="media-frame" style="max-height: 420px;">
+    <div class="cosmic-frame" style="max-height: 400px;">
       <img src="img/made-in-heaven-universe-reset.gif" alt="การเร่งเวลา" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop';">
     </div>
   </section>
 
-  <!-- 4. Stand Stats with JoJo Radar Chart -->
+  <!-- 4. JoJo Stand Stats Wheel (Radar Chart + Specs Table) -->
   <section class="mb-5">
-    <div class="content-card">
-      <h3 class="section-title">
+    <div class="jojo-card" style="border: 1px solid rgba(246, 196, 69, 0.35);">
+      <h3 class="jojo-section-title">
         <i class="fa-solid fa-chart-pie"></i>
-        <span>4. สถิติค่าพลังสแตนด์ (Stand Stats)</span>
+        <span>4. สถิติค่าพลังสแตนด์ (Stand Parameter Wheel)</span>
       </h3>
 
       <div class="row align-items-center g-4">
-        <!-- Chart.js JoJo Radar Graphic -->
+        <!-- JoJo Styled Neon Radar Chart -->
         <div class="col-lg-5 text-center">
-          <div style="position: relative; max-width: 340px; margin: 0 auto;">
-            <canvas id="standStatsChart" width="320" height="320"></canvas>
+          <div style="position: relative; max-width: 320px; margin: 0 auto;">
+            <canvas id="jojoRadarChart" width="320" height="320"></canvas>
           </div>
-          <span class="text-muted small mt-2 d-block">
-            <i class="fa-solid fa-rotate me-1"></i> แผนภูมิเรดาร์ค่าพลังสแตนด์ตามต้นฉบับ JoJo
-          </span>
+          <div class="mt-3 small font-monospace text-warning">
+            <i class="fa-solid fa-circle-dot me-1"></i> STAT EVALUATION : IMMENSURABLE
+          </div>
         </div>
 
-        <!-- Custom Table -->
+        <!-- Spec Breakdown Table -->
         <div class="col-lg-7">
           <div class="table-responsive">
-            <table class="table custom-table align-middle mb-0">
+            <table class="table jojo-table align-middle mb-0">
               <thead>
-                <tr class="text-muted small text-uppercase">
-                  <th>พารามิเตอร์</th>
-                  <th class="text-center" style="width: 90px;">ระดับ</th>
-                  <th>คำอธิบาย</th>
+                <tr class="text-warning small font-monospace">
+                  <th>PARAMETER</th>
+                  <th class="text-center" style="width: 80px;">RANK</th>
+                  <th>DETAILS</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><span class="fw-bold">พลังทำลาย</span><br><small class="text-muted">Destructive Power</small></td>
-                  <td class="text-center"><span class="stat-pill stat-b">B</span></td>
-                  <td class="small text-secondary">แรงหมัดปานกลาง แต่ความเร็วระดับอนันต์ทำให้เกิดแรงปะทะสังหารรุนแรง</td>
+                  <td>
+                    <span class="fw-bold text-white d-block">พลังทำลาย</span>
+                    <small class="text-muted font-monospace">Destructive Power</small>
+                  </td>
+                  <td class="text-center"><span class="stand-stat-badge stat-rank-b">B</span></td>
+                  <td class="small">พลังหมัดปานกลาง แต่ความเร็วระดับอนันต์ทำให้เกิดแรงกระแทกสังหารเป้าหมายได้ในพริบตา</td>
                 </tr>
                 <tr>
-                  <td><span class="fw-bold">ความเร็ว</span><br><small class="text-muted">Speed</small></td>
-                  <td class="text-center"><span class="stat-pill stat-inf">∞</span ></td>
-                  <td class="small text-secondary"><strong>Infinite</strong> ไร้ขีดจำกัด เร่งความเร็วได้ไม่สิ้นสุดตามวัฏจักรเวลา</td>
+                  <td>
+                    <span class="fw-bold text-white d-block">ความเร็ว</span>
+                    <small class="text-muted font-monospace">Speed</small>
+                  </td>
+                  <td class="text-center"><span class="stand-stat-badge stat-rank-inf">∞</span ></td>
+                  <td class="small"><strong class="text-warning">Infinite</strong> ไร้ขีดจำกัด พุ่งทะยานขึ้นเรื่อยๆ จนก้าวข้ามกาลเวลา</td>
                 </tr>
                 <tr>
-                  <td><span class="fw-bold">ระยะจู่โจม</span><br><small class="text-muted">Range</small></td>
-                  <td class="text-center"><span class="stat-pill stat-c">C</span></td>
-                  <td class="small text-secondary">ระยะกายภาพระดับ C แต่ผลการเร่งเวลากระจายครอบคลุมทั่วทั้งเอกภพ</td>
+                  <td>
+                    <span class="fw-bold text-white d-block">ระยะจู่โจม</span>
+                    <small class="text-muted font-monospace">Range</small>
+                  </td>
+                  <td class="text-center"><span class="stand-stat-badge stat-rank-c">C</span></td>
+                  <td class="small">ระยะหมัดทางกายภาพคือ C แต่ผลกระทบจากการเร่งเวลาแผ่ขยายครอบคลุมทั้งเอกภพ</td>
                 </tr>
                 <tr>
-                  <td><span class="fw-bold">ความทนทาน</span><br><small class="text-muted">Persistence</small></td>
-                  <td class="text-center"><span class="stat-pill stat-a">A</span></td>
-                  <td class="small text-secondary">สแตนด์ทำงานต่อเนื่องได้อย่างไร้รอยต่อจนถึงจุดสิ้นสุดของจักรวาล</td>
+                  <td>
+                    <span class="fw-bold text-white d-block">ความทนทาน</span>
+                    <small class="text-muted font-monospace">Persistence</small>
+                  </td>
+                  <td class="text-center"><span class="stand-stat-badge stat-rank-a">A</span></td>
+                  <td class="small">สแตนด์ทำงานต่อเนื่องได้อย่างไร้รอยต่อจนกระทั่งวัฏจักรจักรวาลถูกรีเซ็ตสำเร็จ</td>
                 </tr>
                 <tr>
-                  <td><span class="fw-bold">ความแม่นยำ</span><br><small class="text-muted">Precision</small></td>
-                  <td class="text-center"><span class="stat-pill stat-c">C</span></td>
-                  <td class="small text-secondary">ด้วยความเร็วสูงมาก การโจมตีเน้นอาศัยทิศทางกว้างมากกว่าความแม่นยำจำเพาะ</td>
+                  <td>
+                    <span class="fw-bold text-white d-block">ความแม่นยำ</span>
+                    <small class="text-muted font-monospace">Precision</small>
+                  </td>
+                  <td class="text-center"><span class="stand-stat-badge stat-rank-c">C</span></td>
+                  <td class="small">ด้วยความเร็วสูงมาก จึงเน้นการจู่โจมเป็นวงกว้างมากกว่าการล็อกเป้าหมายเฉพาะจุด</td>
                 </tr>
                 <tr>
-                  <td><span class="fw-bold">การพัฒนา</span><br><small class="text-muted">Development Potential</small></td>
-                  <td class="text-center"><span class="stat-pill stat-a">A</span></td>
-                  <td class="small text-secondary">มีศักยภาพสมบูรณ์ในการปรับเปลี่ยนระเบียบโครงสร้างของจักรวาลใหม่</td>
+                  <td>
+                    <span class="fw-bold text-white d-block">การพัฒนา</span>
+                    <small class="text-muted font-monospace">Development Potential</small>
+                  </td>
+                  <td class="text-center"><span class="stand-stat-badge stat-rank-a">A</span></td>
+                  <td class="small">ศักยภาพสูงสุดในการปรับเปลี่ยนกฎของจักรวาลและสร้างเส้นเวลาใหม่ตามประสงค์</td>
                 </tr>
               </tbody>
             </table>
@@ -537,41 +672,44 @@
     </div>
   </section>
 
-  <!-- 5. Weakness & Defeat -->
+  <!-- 5. Weakness & Defeat (The Singularity Overturned) -->
   <section class="mb-4">
-    <div class="content-card border-danger-subtle" style="background: linear-gradient(180deg, #ffffff 0%, #fffbfb 100%);">
-      <h3 class="section-title text-danger">
-        <i class="fa-solid fa-triangle-exclamation text-danger" style="background: #fee2e2;"></i>
-        <span>5. จุดอ่อนและการพ่ายแพ้ (Weakness & Defeat)</span>
+    <div class="jojo-card" style="border: 1px solid rgba(239, 68, 68, 0.4); background: linear-gradient(180deg, rgba(26, 12, 24, 0.9) 0%, rgba(14, 8, 20, 0.9) 100%);">
+      <h3 class="jojo-section-title text-danger" style="border-bottom-color: rgba(239, 68, 68, 0.3);">
+        <i class="fa-solid fa-skull-crossbones text-danger" style="background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.3);"></i>
+        <span>5. จุดอ่อนและจุดอวสานของสรวงสวรรค์ (The Fall of Pucci)</span>
       </h3>
 
       <div class="row g-4 mt-1">
         <div class="col-md-6">
-          <div class="p-3 bg-white rounded-4 border border-light-subtle shadow-sm h-100">
-            <h6 class="fw-bold text-dark"><i class="fa-solid fa-ban text-danger me-2"></i>ไม่สามารถฝืนชะตากรรมที่แน่นอน</h6>
-            <p class="text-muted small mb-0">พุชชี่ไม่สามารถเปลี่ยนเหตุการณ์ที่ถูกลิขิตไว้ได้ เขาทำได้เพียงเร่งให้มันเกิดขึ้นเร็วขึ้นเท่านั้น หากสิ่งใดถูกกำหนดให้เกิดขึ้น สิ่งนั้นย่อมเกิดขึ้นเสมอ</p>
+          <div class="p-3 rounded-4 h-100" style="background: rgba(10, 8, 20, 0.7); border: 1px solid rgba(255,255,255,0.08);">
+            <h6 class="fw-bold text-warning mb-2"><i class="fa-solid fa-ban me-2"></i>ไม่อาจเปลี่ยนแปลงชะตากรรมที่ลิขิตไว้</h6>
+            <p class="text-secondary small mb-0" style="color: #cbd5e1 !important;">
+              พุชชี่ทำได้เพียงเร่งให้ชะตากรรมเกิดขึ้นเร็วขึ้น แต่ไม่สามารถแก้ไขสิ่งที่จะเกิดขึ้นกับตนเองได้ สิ่งใดที่ถูกกำหนดไว้ ย่อมต้องย้อนกลับมาสนองร่างต้นเสมอ
+            </p>
           </div>
         </div>
 
         <div class="col-md-6">
-          <div class="p-3 bg-white rounded-4 border border-light-subtle shadow-sm h-100">
-            <h6 class="fw-bold text-dark"><i class="fa-solid fa-heart-pulse text-danger me-2"></i>สังขารมนุษย์ธรรมดา</h6>
-            <p class="text-muted small mb-0">แม้สแตนด์จะรวดเร็วไร้ที่ติ แต่เนื้อหนังของพุชชี่ยังคงเป็นมนุษย์ บาดเจ็บได้ ติดเชื้อได้ และยังคงต้องการออกซิเจนในการดำรงชีวิต</p>
+          <div class="p-3 rounded-4 h-100" style="background: rgba(10, 8, 20, 0.7); border: 1px solid rgba(255,255,255,0.08);">
+            <h6 class="fw-bold text-warning mb-2"><i class="fa-solid fa-heart-pulse me-2"></i>สังขารมนุษย์ธรรมดา</h6>
+            <p class="text-secondary small mb-0" style="color: #cbd5e1 !important;">
+              แม้สแตนด์จะมีมิติความเร็วไร้ขีดจำกัด แต่กายเนื้อของพุชชี่ยังคงเป็นมนุษย์ที่ต้องหายใจ ยังคงเหนื่อยล้า บาดเจ็บ และตกอยู่ใต้กฎชีววิทยา
+            </p>
           </div>
         </div>
 
         <div class="col-12">
-          <div class="p-4 rounded-4" style="background: #fff5f5; border: 1px dashed #fca5a5;">
+          <div class="p-4 rounded-4" style="background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(239, 68, 68, 0.4);">
             <div class="d-flex align-items-start gap-3">
-              <i class="fa-solid fa-skull-crossbones text-danger fs-3 mt-1"></i>
+              <i class="fa-solid fa-lungs text-danger fs-2 mt-1"></i>
               <div>
-                <h5 class="fw-bold text-danger mb-1">จุดจบด้วยพิษออกซิเจนบริสุทธิ์ (Pure Oxygen Poisoning)</h5>
-                <p class="text-muted small mb-2">
-                  <strong>เอ็มโพริโอ (Emporio)</strong> ใช้ดิสก์สแตนด์ Weather Report ปล่อยก๊าซออกซิเจนบริสุทธิ์ 100% ภายในห้องปิด ผลจากการเร่งเวลาของ Made in Heaven บีบให้พุชชี่หายใจเอาออกซิเจนเข้มข้นเข้าสู่ปอดอย่างรวดเร็วกว่าปกติมหาศาล จนเกิดภาวะออกซิเจนเป็นพิษเฉียบพลันและเสียชีวิตในที่สุด
+                <h5 class="fw-bold text-white mb-2">พิษออกซิเจน 100% : ชัยชนะของ เอ็มโพริโอ (Emporio)</h5>
+                <p class="text-light small mb-3" style="color: #e2e8f0 !important;">
+                  เอ็มโพริโอใส่แผ่นดิสก์ของ <strong>Weather Report</strong> เข้าสู่ร่างตนเอง และปล่อยก๊าซออกซิเจนบริสุทธิ์ 100% ในห้องกระจกปิดตาย การเร่งเวลาของ Made in Heaven กลายเป็นดาบสองคมที่บีบให้ปอดของพุชชี่สูดออกซิเจนเข้มข้นในปริมาณมหาศาลภายในเสี้ยววินาที จนร่างกายเกิดภาวะเป็นพิษเฉียบพลันและถูกกำราบในที่สุด
                 </p>
-                <div class="d-flex align-items-center gap-2 text-dark small fw-semibold">
-                  <i class="fa-solid fa-sparkles text-warning"></i>
-                  <span>ผลลัพธ์: การเสียชีวิตก่อนครบลูปเวลา ก่อกำเนิด <strong>"Ireneverse"</strong> จักรวาลใหม่ที่ไร้ซึ่งเงาของพุชชี่ และกลุ่มของโจลีนได้ใช้ชีวิตอย่างสงบสุข</span>
+                <div class="p-2 rounded-3 text-warning small fw-bold font-monospace" style="background: rgba(0, 0, 0, 0.4); border-left: 3px solid var(--jojo-gold);">
+                  ✦ BIRTH OF "IRENEVERSE" : การสิ้นชีพของพุชชี่ก่อนครบลูปจักรวาล ก่อให้เกิดมิติใหม่ที่ตัวตนของพุชชี่ถูกลบเลือนไปตลอดกาล ส่งผลให้โจลีนและพวกพ้องได้ใช้ชีวิตอย่างสงบสุขในฐานะ "ไอรีน (Irene)"
                 </div>
               </div>
             </div>
@@ -586,7 +724,7 @@
 <!-- Bootstrap 5 JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Chart.js for JoJo Radar Chart -->
+<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
@@ -598,31 +736,30 @@
 
   // JoJo Stand Radar Chart Configuration
   document.addEventListener("DOMContentLoaded", function () {
-    const ctx = document.getElementById('standStatsChart').getContext('2d');
+    const ctx = document.getElementById('jojoRadarChart').getContext('2d');
     
-    // Scale: E=1, D=2, C=3, B=4, A=5, Infinite=6
     new Chart(ctx, {
       type: 'radar',
       data: {
         labels: [
-          'พลังทำลาย (B)',
-          'ความเร็ว (∞)',
-          'ระยะจู่โจม (C)',
-          'ความทนทาน (A)',
-          'ความแม่นยำ (C)',
-          'การพัฒนา (A)'
+          'POWER (B)',
+          'SPEED (∞)',
+          'RANGE (C)',
+          'PERSISTENCE (A)',
+          'PRECISION (C)',
+          'POTENTIAL (A)'
         ],
         datasets: [{
-          label: 'ระดับพลังสแตนด์',
+          label: 'STAND STATS',
           data: [4, 6, 3, 5, 3, 5],
-          backgroundColor: 'rgba(124, 58, 237, 0.25)',
-          borderColor: '#7c3aed',
-          borderWidth: 2,
-          pointBackgroundColor: '#f59e0b',
+          backgroundColor: 'rgba(157, 78, 221, 0.35)',
+          borderColor: '#f6c445',
+          borderWidth: 2.5,
+          pointBackgroundColor: '#00f0ff',
           pointBorderColor: '#ffffff',
           pointBorderWidth: 2,
           pointRadius: 5,
-          pointHoverRadius: 7
+          pointHoverRadius: 8
         }]
       },
       options: {
@@ -633,23 +770,23 @@
           tooltip: {
             callbacks: {
               label: function(context) {
-                const grades = { 1:'E', 2:'D', 3:'C', 4:'B', 5:'A', 6:'∞ (Infinite)' };
-                return ' ระดับ: ' + (grades[context.raw] || context.raw);
+                const ranks = { 1:'E', 2:'D', 3:'C', 4:'B', 5:'A', 6:'∞ (Infinite)' };
+                return ' RANK: ' + (ranks[context.raw] || context.raw);
               }
             }
           }
         },
         scales: {
           r: {
-            angleLines: { color: 'rgba(0, 0, 0, 0.08)' },
-            grid: { color: 'rgba(0, 0, 0, 0.06)' },
+            angleLines: { color: 'rgba(246, 196, 69, 0.25)' },
+            grid: { color: 'rgba(157, 78, 221, 0.25)' },
             pointLabels: {
               font: {
-                family: "'Prompt', sans-serif",
+                family: "'Cinzel', sans-serif",
                 size: 11,
-                weight: '600'
+                weight: '700'
               },
-              color: '#334155'
+              color: '#f6c445'
             },
             ticks: { display: false, maxTicksLimit: 6 },
             min: 0,
