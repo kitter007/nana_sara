@@ -27,6 +27,7 @@
       --bg-void: #04020a;
       --card-bg: rgba(12, 9, 24, 0.9);
       --card-border: rgba(176, 38, 255, 0.4);
+      --sidebar-width: 280px;
     }
 
     * { box-sizing: border-box; }
@@ -63,16 +64,18 @@
       pointer-events: none;
     }
 
-    /* FIXED NAVBAR : ล็อกขนาดความสูงถาวร ไม่ให้ขยายตอนกดเร่งเวลา */
+    /* ====================================================
+       NAVBAR (TOP MENUBAR)
+    ==================================================== */
     .navbar {
-      background: rgba(4, 2, 10, 0.98) !important;
-      backdrop-filter: blur(16px);
-      border-bottom: 2px solid rgba(255, 215, 0, 0.35) !important;
+      background: rgba(6, 3, 15, 0.96) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.4) !important;
       box-shadow: 0 4px 35px rgba(0, 0, 0, 0.9) !important;
       height: 56px !important;
       min-height: 56px !important;
       max-height: 56px !important;
-      padding: 0 1rem !important;
+      padding: 0 1.25rem !important;
       z-index: 1050 !important;
     }
 
@@ -84,45 +87,247 @@
       padding: 0 !important;
     }
 
-    /* Sidebar */
+    .nav-toggle-btn {
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid var(--gold-jojo);
+      color: var(--gold-jojo);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .nav-toggle-btn:hover {
+      background: var(--gold-jojo);
+      color: #000;
+      box-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    .nav-brand-title {
+      font-family: 'Cinzel', 'Kanit', sans-serif;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+    }
+
+    .nav-radar-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
+      animation: radarPulse 1.5s infinite;
+    }
+
+    @keyframes radarPulse {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 12px #22c55e; }
+      100% { transform: scale(0.9); opacity: 0.7; }
+    }
+
+    /* ====================================================
+       SIDEBAR (TERMINAL DIRECTORY MENUBAR)
+    ==================================================== */
     .sidebar {
-      width: 260px;
+      width: var(--sidebar-width);
       height: calc(100vh - 56px);
       position: fixed;
       top: 56px;
       left: 0;
-      background: rgba(6, 4, 15, 0.98);
+      background: linear-gradient(180deg, rgba(8, 5, 20, 0.98) 0%, rgba(4, 2, 10, 0.98) 100%);
       backdrop-filter: blur(25px);
-      padding-top: 15px;
-      z-index: 1000;
-      border-right: 1px solid rgba(176, 38, 255, 0.3);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1040;
+      border-right: 1px solid rgba(176, 38, 255, 0.35);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 10px 0 35px rgba(0, 0, 0, 0.7);
     }
 
-    .sidebar a {
+    .sidebar-scroll-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 14px 40px;
+    }
+
+    .sidebar-scroll-container::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .sidebar-scroll-container::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar-scroll-container::-webkit-scrollbar-thumb {
+      background: rgba(176, 38, 255, 0.4);
+      border-radius: 10px;
+    }
+
+    .sidebar-scroll-container::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-jojo);
+    }
+
+    .sidebar-user-card {
+      background: linear-gradient(135deg, rgba(30, 16, 60, 0.8) 0%, rgba(14, 9, 30, 0.8) 100%);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 0 20px rgba(176, 38, 255, 0.2);
+    }
+
+    .sidebar-category-header {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 2px;
       color: #94a3b8;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar-category-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(176, 38, 255, 0.25);
+    }
+
+    .sidebar-link {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 13px 22px;
+      padding: 10px 14px;
+      color: #94a3b8;
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
+      border-radius: 10px;
+      margin-bottom: 4px;
       transition: all 0.25s ease;
-      border-left: 3px solid transparent;
+      position: relative;
+      border: 1px solid transparent;
     }
 
-    .sidebar a:hover, .sidebar a.active {
+    .sidebar-link i {
+      width: 20px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #a855f7;
+      transition: all 0.25s ease;
+    }
+
+    .sidebar-link:hover {
+      color: #ffffff;
+      background: rgba(176, 38, 255, 0.15);
+      border-color: rgba(176, 38, 255, 0.4);
+      padding-left: 18px;
+    }
+
+    .sidebar-link:hover i {
       color: var(--gold-jojo);
-      background: linear-gradient(90deg, rgba(176, 38, 255, 0.3) 0%, transparent 100%);
-      border-left: 3px solid var(--gold-jojo);
-      padding-left: 28px;
-      text-shadow: 0 0 12px var(--gold-glow);
+      transform: scale(1.15);
+    }
+
+    /* Style พิเศษสำหรับครูผู้สอน (ใส่มงกุฎและขอบทอง) */
+    .sidebar-link.teacher-special-link {
+      background: linear-gradient(90deg, rgba(255, 215, 0, 0.12) 0%, rgba(176, 38, 255, 0.1) 100%);
+      border: 1px solid rgba(255, 215, 0, 0.5);
+      color: #fef08a;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+    }
+
+    .sidebar-link.teacher-special-link i.fa-crown {
+      color: var(--gold-jojo);
+      filter: drop-shadow(0 0 8px var(--gold-glow));
+      font-size: 1.05rem;
+    }
+
+    .sidebar-link.teacher-special-link:hover {
+      background: linear-gradient(90deg, rgba(255, 215, 0, 0.22) 0%, rgba(176, 38, 255, 0.2) 100%);
+      border-color: var(--gold-jojo);
+      box-shadow: 0 0 25px var(--gold-glow);
+    }
+
+    .badge-teacher {
+      background: linear-gradient(135deg, var(--gold-jojo), #f59e0b);
+      color: #000;
+      font-weight: 900;
+      font-size: 0.68rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: 'Cinzel', monospace;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 10px var(--gold-glow);
+    }
+
+    /* Current Page Link (Active) */
+    .sidebar-link.active {
+      color: var(--gold-jojo);
+      background: linear-gradient(90deg, rgba(176, 38, 255, 0.3) 0%, rgba(255, 215, 0, 0.1) 100%);
+      border: 1px solid var(--gold-jojo);
+      font-weight: 700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .sidebar-link.active i {
+      color: var(--gold-jojo);
+      text-shadow: 0 0 10px var(--gold-glow);
+    }
+
+    .sidebar-link .active-indicator {
+      margin-left: auto;
+      font-size: 0.7rem;
+      background: var(--gold-jojo);
+      color: #000;
+      font-weight: 900;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: 'Cinzel', monospace;
+    }
+
+    .sidebar-footer {
+      padding: 12px 18px;
+      background: rgba(4, 2, 10, 0.9);
+      border-top: 1px solid rgba(176, 38, 255, 0.2);
+      font-size: 0.75rem;
+      color: #64748b;
+      font-family: monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1030;
+    }
+
+    .sidebar-backdrop.active {
+      display: block;
     }
 
     /* Content Area */
     .content {
-      margin-left: 260px;
+      margin-left: var(--sidebar-width);
       padding: 30px 30px 90px;
       margin-top: 56px;
       max-width: 1280px;
@@ -130,12 +335,11 @@
       transition: filter 0.4s ease;
     }
 
-    /* JoJo Anime Palette Swap Mode เมื่อกดเร่งเวลา (เฉพาะพื้นที่เนื้อหา) */
     .content.time-warped {
       filter: hue-rotate(65deg) contrast(1.18);
     }
 
-    /* Manga SFX Stickers (ゴゴゴゴ / ズキュウウン) */
+    /* Manga SFX Stickers */
     .manga-sfx {
       font-family: 'Dela Gothic One', cursive;
       color: var(--purple-heaven);
@@ -169,7 +373,6 @@
       box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 45px rgba(255, 215, 0, 0.25);
     }
 
-    /* Tactical HUD Corner Reticles [ + ] */
     .hud-reticle-tl { position: absolute; top: 12px; left: 16px; font-family: monospace; font-size: 12px; color: var(--gold-jojo); opacity: 0.7; }
     .hud-reticle-br { position: absolute; bottom: 12px; right: 16px; font-family: monospace; font-size: 12px; color: var(--gold-jojo); opacity: 0.7; }
 
@@ -401,11 +604,20 @@
     }
 
     /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .sidebar { left: -260px; }
-      .sidebar.active { left: 0; }
-      .content { margin-left: 0; padding: 20px 14px; }
-      .jojo-chamfer-card { padding: 22px; }
+    @media (max-width: 992px) {
+      .sidebar {
+        left: calc(-1 * var(--sidebar-width));
+      }
+      .sidebar.active {
+        left: 0;
+      }
+      .content {
+        margin-left: 0;
+        padding: 20px 14px;
+      }
+      .jojo-chamfer-card {
+        padding: 22px;
+      }
     }
   </style>
 </head>
@@ -415,42 +627,145 @@
 <canvas id="warpCanvas"></canvas>
 <div class="manga-screentone"></div>
 
-<!-- Navbar (ล็อกขนาดความสูง 56px ป้องกันบั๊กขยาย) -->
+<!-- ====================================================
+     NAVBAR (TOP MENUBAR)
+==================================================== -->
 <nav class="navbar navbar-dark fixed-top">
   <div class="container-fluid">
-    <div class="d-flex align-items-center">
-      <button class="btn btn-outline-warning btn-sm me-3 px-3 py-1 rounded-3" onclick="toggleSidebar()" aria-label="เปิดปิดเมนู">
-        <i class="fa-solid fa-bars"></i>
+    <!-- Left Section -->
+    <div class="d-flex align-items-center gap-3">
+      <button class="nav-toggle-btn" onclick="toggleSidebar()" aria-label="เปิดปิดเมนูบาร์">
+        <i class="fa-solid fa-bars-staggered me-1"></i> MENU
       </button>
-      <span class="navbar-brand mb-0 fw-bold fs-5 tracking-wide" style="font-family: 'Cinzel', 'Kanit', sans-serif;">
-        <i class="fa-solid fa-hourglass-end text-warning me-2"></i>เทคโนโลยีสารสนเทศ 2/1
+      <span class="nav-brand-title">
+        <i class="fa-solid fa-star text-warning"></i>
+        <span>เทคโนโลยีสารสนเทศ 2/1</span>
       </span>
     </div>
     
-    <div class="d-none d-md-flex align-items-center gap-3">
-      <span class="badge text-bg-dark border border-warning border-opacity-50 font-monospace px-3 py-2 text-warning">
-        <i class="fa-solid fa-crosshairs me-1 text-danger"></i> CAPE CANAVERAL : 28°30'N 80°36'W
+    <!-- Right Status HUD -->
+    <div class="d-flex align-items-center gap-3">
+      <div class="d-none d-md-flex align-items-center gap-2 font-monospace small px-3 py-1 rounded-pill" style="background: rgba(16, 10, 32, 0.85); border: 1px solid rgba(255, 215, 0, 0.35);">
+        <span class="nav-radar-dot"></span>
+        <span class="text-warning">CAPE CANAVERAL</span>
+        <span class="text-secondary opacity-75">| 28°30'N 80°36'W</span>
+      </div>
+      <span class="badge text-bg-dark border border-secondary font-monospace d-none d-lg-inline-block px-2 py-1 small">
+        <i class="fa-solid fa-shield-halved text-info me-1"></i> HEAVEN // v6.0
       </span>
     </div>
   </div>
 </nav>
 
-<!-- Sidebar -->
-<div id="sidebar" class="sidebar" style="margin-top: -10px;">
-  <a href="index.html">home</a>
-  <a href="pongsapat.html">pongsapat</a>
-  <a href="kittipron.html">กิตติพร สินนุรักษ์กูล</a>
-  <a href="phupha.html">ภูผา สุทธการ</a>
-  <a href="jiruchchaya.html">Jiruchchaya</a>
-  <a href="M_Aunew.html">ชีวประวัติ พระมหารังสิตมหิดลบรมวงค์เธอยอดฟ้าจุฬาลงกรณ์(เอ็ม)</a>
-  <a href="natnicha.html">natnicha</a>
-  <a href="Narawich.html">Narawich Zhong Guo</a>
-  <a href="pinirapat.html">pinirapat</a>
-  <a href="kanyaphak.html">kanyaphak</a>
-  <a href="grammychibi.html">14 ศรายุทธ โพธิ์ทรง</a>
-</div>
+<!-- Mobile Overlay Backdrop -->
+<div id="sidebarBackdrop" class="sidebar-backdrop" onclick="toggleSidebar()"></div>
 
-<!-- Main Content Area -->
+<!-- ====================================================
+     SIDEBAR (TERMINAL DIRECTORY MENUBAR)
+==================================================== -->
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-scroll-container">
+
+    <!-- Mini Profile Card (14 ศรายุทธ โพธิ์ทรง) -->
+    <div class="sidebar-user-card">
+      <div class="d-flex align-items-center gap-3">
+        <div class="position-relative">
+          <div class="rounded-circle p-1" style="background: linear-gradient(135deg, var(--gold-jojo), var(--purple-heaven));">
+            <div class="bg-dark rounded-circle p-2 text-center" style="width: 42px; height: 42px; line-height: 26px;">
+              <i class="fa-solid fa-infinity text-warning fs-5"></i>
+            </div>
+          </div>
+        </div>
+        <div style="line-height: 1.3;">
+          <div class="fw-bold text-white small">ศรายุทธ โพธิ์ทรง</div>
+          <small class="text-warning font-monospace" style="font-size: 0.72rem;">NO.14 // STAND MASTER</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 1: Main System -->
+    <div class="sidebar-category-header">
+      <i class="fa-solid fa-terminal text-warning"></i> MAIN SYSTEM
+    </div>
+    <a href="index.html" class="sidebar-link">
+      <i class="fa-solid fa-house"></i>
+      <span>หน้าแรก (Home)</span>
+    </a>
+
+    <!-- Category 2: INSTRUCTOR / TEACHER (แยกครูกิตติพร ออกมาพร้อมมงกุฎ) -->
+    <div class="sidebar-category-header">
+      <i class="fa-solid fa-crown text-warning"></i> INSTRUCTOR // TEACHER
+    </div>
+    <a href="kittipron.html" class="sidebar-link teacher-special-link">
+      <i class="fa-solid fa-crown"></i>
+      <span>กิตติพร สินนุรักษ์กูล</span>
+      <span class="badge-teacher ms-auto">👑 TEACHER</span>
+    </a>
+
+    <!-- Category 3: Classmates Roster (IT 2/1) -->
+    <div class="sidebar-category-header">
+      <i class="fa-solid fa-users-viewfinder text-info"></i> STUDENT ROSTER (2/1)
+    </div>
+
+    <a href="pongsapat.html" class="sidebar-link">
+      <i class="fa-solid fa-user-astronaut"></i>
+      <span>pongsapat</span>
+    </a>
+
+    <a href="phupha.html" class="sidebar-link">
+      <i class="fa-solid fa-mountain"></i>
+      <span>ภูผา สุทธการ</span>
+    </a>
+
+    <a href="jiruchchaya.html" class="sidebar-link">
+      <i class="fa-solid fa-feather"></i>
+      <span>Jiruchchaya</span>
+    </a>
+
+    <a href="M_Aunew.html" class="sidebar-link">
+      <i class="fa-solid fa-landmark"></i>
+      <span>พระมหารังสิตฯ (เอ็ม)</span>
+    </a>
+
+    <a href="natnicha.html" class="sidebar-link">
+      <i class="fa-solid fa-user"></i>
+      <span>natnicha</span>
+    </a>
+
+    <a href="Narawich.html" class="sidebar-link">
+      <i class="fa-solid fa-dragon"></i>
+      <span>Narawich Zhong Guo</span>
+    </a>
+
+    <a href="pinirapat.html" class="sidebar-link">
+      <i class="fa-solid fa-gem"></i>
+      <span>pinirapat</span>
+    </a>
+
+    <a href="kanyaphak.html" class="sidebar-link">
+      <i class="fa-solid fa-sparkles"></i>
+      <span>kanyaphak</span>
+    </a>
+
+    <!-- Active Profile: 14 ศรายุทธ โพธิ์ทรง -->
+    <a href="grammychibi.html" class="sidebar-link active">
+      <i class="fa-solid fa-infinity"></i>
+      <span>14 ศรายุทธ โพธิ์ทรง</span>
+      <span class="active-indicator">CURRENT</span>
+    </a>
+
+  </div>
+
+  <!-- Sidebar Bottom Footer -->
+  <div class="sidebar-footer">
+    <span><i class="fa-solid fa-circle-nodes text-warning me-1"></i> STATUS: ACTIVE</span>
+    <span class="text-secondary font-monospace">IT_2/1</span>
+  </div>
+</aside>
+
+<!-- ====================================================
+     MAIN CONTENT AREA
+==================================================== -->
 <div class="content" id="mainContent">
 
   <!-- Interactive Time Accelerator & Cosmic Clock HUD -->
@@ -982,10 +1297,12 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  // Sidebar Toggle
+  // Sidebar & Backdrop Toggle
   function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebarBackdrop');
     sidebar.classList.toggle('active');
+    backdrop.classList.toggle('active');
   }
 
   // --- Real-time Warp Cosmic Canvas ---
@@ -1109,7 +1426,7 @@
     }
   }
 
-  // --- Trigger Acceleration Button (แก้ให้เปลี่ยนสีเฉพาะ Content ไม่กระทบ Navbar) ---
+  // --- Trigger Acceleration Button ---
   function triggerTimeAcceleration() {
     isAccelerating = !isAccelerating;
     const btn = document.getElementById('hyperWarpBtn');
