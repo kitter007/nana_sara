@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ประเทศจีน | เทคโนโลยีสารสนเทศ 2/1</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --china-red: #b21f2d;
+      --china-dark-red: #7d1020;
+      --china-gold: #f6c445;
+      --dark: #1c2331;
+      --cream: #fffaf0;
+    }
+
+    body {
+      overflow-x: hidden;
+      background: #f4f6fb;
+      font-family: Tahoma, sans-serif;
+    }
+
+    /* Sidebar desktop */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      background: #343a40;
+      padding-top: 10px;
+      z-index: 1000;
+    }
+
+    .sidebar a {
+      color: white;
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      transition: .25s;
+    }
+
+    .sidebar a:hover {
+      background: #495057;
+      color: var(--china-gold);
+    }
+
+    .sidebar .menu-current {
+      background: #495057;
+      color: var(--china-gold);
+      border-left: 4px solid var(--china-gold);
+    }
+
+    /* Content */
+    .content {
+      margin-left: 250px;
+      padding: 30px;
+      margin-top: 56px;
+      min-height: 100vh;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .sidebar {
+        left: -250px;
+        transition: 0.3s;
+      }
+
+      .sidebar.active {
+        left: 0;
+      }
+
+      .content {
+        margin-left: 0;
+        padding: 20px;
+      }
+    }
+
+    .hero {
+      min-height: 410px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(19, 20, 34, .88), rgba(19, 20, 34, .30)),
+        url("https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1600&q=85")
+        center/cover;
+      box-shadow: 0 15px 35px rgba(23, 32, 51, .20);
+    }
+
+    .hero-text {
+      max-width: 690px;
+      padding: 48px;
+    }
+
+    .flag-image {
+      width: 82px;
+      height: 54px;
+      object-fit: cover;
+      border: 2px solid var(--china-gold);
+      border-radius: 5px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
+      margin-bottom: 17px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 span {
+      color: var(--china-gold);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 18px;
+      border-radius: 25px;
+      background: var(--china-gold);
+      color: #452900;
+      font-weight: bold;
+    }
+
+    .section-title {
+      margin: 40px 0 22px;
+      padding-left: 13px;
+      border-left: 6px solid var(--china-red);
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    .stat-card {
+      height: 100%;
+      padding: 22px;
+      border-radius: 18px;
+      background: white;
+      text-align: center;
+      border-bottom: 5px solid var(--china-red);
+      box-shadow: 0 7px 18px rgba(0, 0, 0, .07);
+      transition: .3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 25px rgba(178, 31, 45, .18);
+    }
+
+    .stat-icon {
+      font-size: 2.2rem;
+    }
+
+    .stat-card h3 {
+      margin: 8px 0 4px;
+      color: var(--china-red);
+      font-weight: bold;
+    }
+
+    .quote-box {
+      padding: 23px;
+      border: 2px dashed var(--china-gold);
+      border-radius: 16px;
+      background: var(--cream);
+      color: #5f461a;
+      font-size: 1.08rem;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      border-radius: 16px;
+      transition: .3s;
+    }
+
+    .gallery-image:hover {
+      transform: scale(1.04) rotate(-2deg);
+      filter: saturate(1.25);
+    }
+
+    .place-card {
+      min-height: 310px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+      transition: .3s;
+    }
+
+    .place-card:hover {
+      transform: scale(1.025);
+    }
+
+    .place-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0, 0, 0, .85), transparent 65%);
+    }
+
+    .place-card-content {
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      padding: 25px;
+      color: white;
+    }
+
+    .timeline {
+      margin-left: 17px;
+      padding-left: 30px;
+      border-left: 4px solid var(--china-gold);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 23px;
+      padding: 18px;
+      border-radius: 0 16px 16px 16px;
+      background: white;
+      box-shadow: 0 7px 18px rgba(0, 0, 0, .07);
+    }
+
+    .timeline-item::before {
+      content: "★";
+      position: absolute;
+      top: 13px;
+      left: -47px;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      border-radius: 50%;
+      background: var(--china-red);
+      color: var(--china-gold);
+      text-align: center;
+    }
+
+    .info-card {
+      height: 100%;
+      padding: 25px;
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .08);
+      transition: .3s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-7px);
+    }
+
+    .number {
+      color: var(--china-red);
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .food {
+      display: inline-block;
+      margin: 5px 2px;
+      padding: 9px 15px;
+      border-radius: 25px;
+      background: #fff2d2;
+      color: #7d3b00;
+      font-weight: bold;
+    }
+
+    .thank-box {
+      position: relative;
+      overflow: hidden;
+      padding: 35px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--china-red), var(--china-dark-red));
+      color: white;
+    }
+
+    .thank-box::after {
+      content: "福";
+      position: absolute;
+      top: -37px;
+      right: 25px;
+      color: rgba(255, 255, 255, .11);
+      font-size: 170px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-primary fixed-top">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center">
+      <button class="btn btn-outline-light me-2" onclick="toggleSidebar()">☰</button>
+      <span class="navbar-brand mb-0 h1">เทคโนโลยีสารสนเทศ 2/1</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar" style="margin-top: -10px;">
+  <a href="index.html">home</a>
+  <a href="pongsapat.html">pongsapat</a>
+  <a href="kittipron.html">กิตติพร สินนุรักษ์กูล</a>
+  <a href="phupha.html">ภูผา สุทธการ</a>
+  <a href="jiruchchaya.html">Jiruchchaya</a>
+  <a href="M_Aunew.html">ชีวประวัติ พระมหารังสิตมหิดลบรมวงค์เธอยอดฟ้าจุฬาลงกรณ์(เอ็ม)</a>
+  <a href="natnicha.html">natnicha</a>
+  <a href="Narawich.html">Narawich Zhong Guo</a>
+  <a href="">Manu1</a>
+  <a href="">Manu2</a>
+  <a href="">Manu3</a>
+</div>
+
+<!-- Content -->
+<div class="content">
+
+  <section class="hero">
+    <div class="hero-text">
+      <img class="flag-image"
+           src="Flag_of_the_People's_Republic_of_China.svg"
+           alt="ธงประเทศจีน">
+
+      <h1>CHINA <span>中国</span></h1>
+      <p class="lead">ดินแดนแห่งอารยธรรมเก่าแก่ เทคโนโลยีล้ำสมัย และวัฒนธรรมอันน่าหลงใหล</p>
+      <span class="hero-badge">สาธารณรัฐประชาชนจีน · 中华人民共和国</span>
+    </div>
+  </section>
+
+  <h2 class="section-title">รู้จักประเทศจีนแบบรวดเร็ว</h2>
+
+  <div class="row g-4">
+    <div class="col-md-3 col-6">
+      <div class="stat-card">
+        <div class="stat-icon">🏛️</div>
+        <h3>ปักกิ่ง</h3>
+        <p class="mb-0">เมืองหลวง</p>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-6">
+      <div class="stat-card">
+        <div class="stat-icon">🗣️</div>
+        <h3>จีนกลาง</h3>
+        <p class="mb-0">ภาษาราชการ</p>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-6">
+      <div class="stat-card">
+        <div class="stat-icon">💴</div>
+        <h3>หยวน</h3>
+        <p class="mb-0">สกุลเงิน</p>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-6">
+      <div class="stat-card">
+        <div class="stat-icon">🐼</div>
+        <h3>แพนด้า</h3>
+        <p class="mb-0">สัตว์สัญลักษณ์</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-5 g-4">
+    <div class="col-lg-7">
+      <h2 class="section-title">ประเทศที่เชื่อมอดีตและอนาคต</h2>
+      <p>
+        ประเทศจีนเป็นหนึ่งในอารยธรรมที่เก่าแก่ที่สุดของโลก มีประวัติศาสตร์ยาวนานหลายพันปี
+        ตั้งแต่ราชวงศ์โบราณ กำแพงเมืองจีน และเส้นทางสายไหม จนถึงยุคเมืองทันสมัย
+        รถไฟความเร็วสูง และนวัตกรรมดิจิทัล
+      </p>
+
+      <div class="quote-box">
+        “การเดินทางหนึ่งพันลี้ เริ่มต้นด้วยก้าวแรก”<br>
+        <small>— คำกล่าวที่ได้รับความนิยมจากปรัชญาจีนโบราณ</small>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="row g-3">
+        <div class="col-6">
+          <img class="gallery-image"
+               src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=600&q=80"
+               alt="กำแพงเมืองจีน">
+        </div>
+
+        <div class="col-6">
+          <img class="gallery-image"
+               src="https://images.unsplash.com/photo-1548919973-5cef591cdbc9?auto=format&fit=crop&w=600&q=80"
+               alt="เมืองจีน">
+        </div>
+
+        <div class="col-12">
+          <img class="gallery-image"
+               src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=900&q=80"
+               alt="สถาปัตยกรรมจีน">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">สถานที่สำคัญของจีน</h2>
+
+  <div class="row g-4">
+    <div class="col-md-6 col-xl-4">
+      <div class="place-card"
+           style="background-image: url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=800&q=80');">
+        <div class="place-card-content">
+          <h3>กำแพงเมืองจีน</h3>
+          <p class="mb-0">สถาปัตยกรรมขนาดมหึมาที่ทอดยาวผ่านภูเขา</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xl-4">
+      <div class="place-card"
+           style="background-image: url('https://images.unsplash.com/photo-1548919973-5cef591cdbc9?auto=format&fit=crop&w=800&q=80');">
+        <div class="place-card-content">
+          <h3>เซี่ยงไฮ้</h3>
+          <p class="mb-0">ศูนย์กลางเศรษฐกิจและเมืองแห่งอนาคต</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xl-4">
+      <div class="place-card"
+           style="background-image: url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80');">
+        <div class="place-card-content">
+          <h3>พระราชวังต้องห้าม</h3>
+          <p class="mb-0">พระราชวังโบราณใจกลางกรุงปักกิ่ง</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">วัฒนธรรมจีน</h2>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>ตรุษจีน</h4>
+          <p class="mb-0">เทศกาลสำคัญที่สุด มีการรวมญาติ แจกอั่งเปา เชิดสิงโต และประดับโคมไฟสีแดง</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>การเขียนพู่กันจีน</h4>
+          <p class="mb-0">ศิลปะการเขียนอักษรจีนที่แสดงทั้งความงาม ความสงบ และบุคลิกของผู้เขียน</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>กังฟู</h4>
+          <p class="mb-0">ศิลปะการต่อสู้ที่เน้นวินัย ความแข็งแรง และการควบคุมร่างกายกับจิตใจ</p>
+        </div>
+
+        <div class="timeline-item">
+          <h4>ชา</h4>
+          <p class="mb-0">วัฒนธรรมการดื่มชาที่มีมายาวนาน ชาแต่ละชนิดมีรส กลิ่น และวิธีชงแตกต่างกัน</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="info-card">
+        <h3 class="text-danger">สีมงคล</h3>
+        <p>สีแดงสื่อถึงความสุข ความโชคดี และความสำเร็จ จึงพบได้บ่อยในเทศกาลและงานเฉลิมฉลอง</p>
+        <hr>
+        <h4>อาหารจีนยอดนิยม</h4>
+        <span class="food">🥟 ติ่มซำ</span>
+        <span class="food">🍜 บะหมี่</span>
+        <span class="food">🦆 เป็ดปักกิ่ง</span>
+        <span class="food">🥢 หม้อไฟ</span>
+        <span class="food">🍚 ข้าวผัด</span>
+        <span class="food">🫖 ชาจีน</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">จีนยุคใหม่และเทคโนโลยี</h2>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="info-card">
+        <div class="number">01</div>
+        <h3>รถไฟความเร็วสูง</h3>
+        <p class="mb-0">เครือข่ายรถไฟความเร็วสูงช่วยเชื่อมเมืองต่าง ๆ เข้าด้วยกันอย่างรวดเร็วและสะดวก</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="info-card">
+        <div class="number">02</div>
+        <h3>เมืองอัจฉริยะ</h3>
+        <p class="mb-0">หลายเมืองใช้เทคโนโลยีกับระบบขนส่ง การชำระเงิน และบริการสาธารณะ</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="info-card">
+        <div class="number">03</div>
+        <h3>อีคอมเมิร์ซ</h3>
+        <p class="mb-0">การซื้อขายออนไลน์และการชำระเงินผ่านมือถือเป็นส่วนหนึ่งของชีวิตประจำวัน</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5 g-4 align-items-center">
+    <div class="col-md-6">
+      <img class="img-fluid rounded-4 shadow"
+           src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1000&q=85"
+           alt="เมืองจีนสมัยใหม่">
+    </div>
+
+    <div class="col-md-6">
+      <h2>มหานครที่ไม่เคยหยุดพัฒนา</h2>
+      <p>
+        เมืองอย่างปักกิ่ง เซี่ยงไฮ้ เซินเจิ้น และกว่างโจว
+        ผสมผสานวัฒนธรรมดั้งเดิมเข้ากับชีวิตเมืองสมัยใหม่ได้อย่างน่าสนใจ
+      </p>
+      <p class="text-muted">จีนมีทั้งอดีตที่ทรงคุณค่า และอนาคตที่น่าจับตามอง</p>
+    </div>
+  </div>
+
+  <div class="thank-box mt-5">
+    <h2>谢谢 · Xièxiè</h2>
+    <p class="mb-0">ขอบคุณที่เข้ามาเรียนรู้เรื่องราวของประเทศจีน</p>
+  </div>
+
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
