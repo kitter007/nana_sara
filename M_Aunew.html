@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>เทคโนโลยีสารสนเทศ 2/1</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Sidebar desktop */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 56px; /* ความสูง navbar */
+      left: 0;
+      background: #343a40;
+      padding-top: 10px;
+    }
+
+    .sidebar a {
+      color: white;
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background: #495057;
+    }
+
+    /* Content */
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      margin-top: 56px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .sidebar {
+        left: -250px;
+        transition: 0.3s;
+      }
+
+      .sidebar.active {
+        left: 0;
+      }
+
+      .content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-primary fixed-top">
+  <div class="container-fluid">
+
+    <!-- กลุ่มฝั่งซ้าย -->
+    <div class="d-flex align-items-center">
+      <button class="btn btn-outline-light me-2" onclick="toggleSidebar()">☰</button>
+      <span class="navbar-brand mb-0 h1">เทคโนโลยีสารสนเทศ 2/1</span>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar" style="margin-top: -10px;">
+  <a href="index.html">home</a>
+  <a href="pongsapat.html">pongsapat</a>
+  <a href="kittipron.html">กิตติพร สินนุรักษ์กูล</a>
+  <a href="phupha.html">ภูผา สุทธการ</a>
+  <a href="jiruchchaya.html">Jiruchchaya</a>
+  <a href="M_Aunew.html">ชีวประวัติ พระมหารังสิตมหิดลบรมวงค์เธอยอดฟ้าจุฬาลงกรณ์(เอ็ม)</a>
+  <a href="natnicha.html">natnicha</a>
+  <a href="">Manu1</a>
+  <a href="">Manu2</a>
+  <a href="">Manu3</a>
+</div>
+
+<!-- Content -->
+ <div class="container">
+    <div class="content">
+      <h3>ประสูติ</h3>
+      <div>
+          <p>พระมหารังสิตมหิดลบรมวงค์เธอยอดฟ้าจุฬาลงกรณ์(เอ็ม) ประสูติเมื่อวันที่ 26 มีนาคม พุทธศักราช 2530 ณ ย่านรังสิต อำเภอธัญบุรี จังหวัดปทุมธานี เติบโตมาจากครอบครัวในชุมชนแออัด (สลัม) ในย่านรังสิต ซึ่งพระบิดาของเขาประกอบอาชีพเป็นคนขับรถเมล์ ส่วนพระมารดาทำงานรับจ้างทั่วไป ด้วยความผูกพันและเติบโตมาในพื้นที่นี้ ทำให้อาณาจักรธุรกิจรถแต่งของเขาถูกตั้งชื่อและเป็นที่รู้จักในนาม "เอ็ม ออนิว รังสิต"</p>
+          <div class="row">
+            <div class="col-md-6 col-12"><center><img src="img_setthawut/M1.1.jpg" class="rounded-3 mb-3" alt="" width="100%"></center></div>
+            <div class="col-md-6 col-12"><center><img src="img_setthawut/M2.jpg" class="rounded-3 mb-3" alt="" width="100%"></center></div>
+          </div>
+          <div>
+          <h4>ประวัติ</h4>
+            <h5>1.ชีวิตวัยเด็กและอดีตสีเทา</h5>
+            <ul>
+              <li><b>ต้นทุนชีวิตต่ำ:</b>เอ็มเติบโตมาในชุมชนแออัดหรือสลัมย่านรังสิต ครอบครัวไม่ได้ร่ำรวย โดยคุณพ่อของเขาทำงานเป็นคนขับรถเมล์</li>
+              <li><b>ก้าวพลาดสู่โลกสีเทา:</b>ในช่วงวัยรุ่น เอ็มเคยเดินเส้นทางที่ผิดพลาด เขามีประวัติข้องเกี่ยวกับยาเสพติด (เคยเป็นผู้ค้า) และเคยเข้าออกสถานพินิจ รวมถึงเรือนจำมาแล้วหลายครั้ง มีรอยสักเต็มตัวตามสไตล์วัยรุ่นสร้างตัวในยุคนั้น</li>
+              <li><b>จุดเปลี่ยนชีวิต:</b>หลังจากเข้าออกคุกอยู่หลายรอบ เอ็มถึงจุดที่ "คิดได้" และตั้งใจอย่างแน่วแน่ว่าจะไม่กลับไปเดินเส้นทางเดิมอีก เขาต้องการเปลี่ยนชีวิตเพื่อทำมาหากินอย่างสุจริตและเป็นส่วนหนึ่งของสังคม</li>
+            </ul>
+            <h5>2. เส้นทางสู่วงการรถซิ่งและฉายา "เอ็ม ออนิว"</h5>
+            <ul>
+              <li><b>ความชอบตั้งแต่เด็ก:</b>เอ็มมีความหลงใหลในเรื่องของการแต่งรถยนต์มาตั้งแต่ยังเป็นเด็ก</li>
+              <li><b>แจ้งเกิดบน Facebook:</b>หลังจากกลับตัว เขานำทักษะการพูดและการขายมาใช้ในทางที่ถูก ประจวบเหมาะกับช่วงที่แพลตฟอร์ม Facebook กำลังเติบโต เขาจึงเริ่มทำคอนเทนต์เกี่ยวกับวิถีชีวิตและวัฒนธรรมการแต่งรถกระบะซิ่ง</li>
+              <li><b>ผู้นำเทรนด์ All-New:</b>ในยุคที่รถกระบะ Isuzu D-Max โฉมใหม่ (ที่เรียกกันติดปากว่า All New) กำลังฮิตในหมู่ตลาดรถซิ่ง เอ็มถือเป็นผู้บุกเบิก คลุกคลี และนำเทรนด์การแต่งรถรุ่นนี้จนโด่งดังอย่างมาก ทำให้คนในวงการตั้งฉายาให้เขาว่า "เอ็ม ออนิวรังสิต"</li>
+              <li><b>ประธาน M Full Option:</b>จากคนทำคอนเทนต์ เขาต่อยอดความรู้มาเปิดอู่และธุรกิจขายอุปกรณ์แต่งรถกระบะในชื่อ M Full Option รังสิต ซึ่งประสบความสำเร็จอย่างสูง มีแฟนคลับและลูกค้ายกย่องให้เขาเป็น "ประธานเอ็ม" หรือไอดอลสายสู้ชีวิต</li>
+            </ul>
+          </div>
+          <div>
+            <div class="row">
+              <div class="col-12"><img src="img_setthawut/M&P.png" width="100%" class="rounded-3 mb-3" alt=""></div>
+            </div>
+            
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <h4>ชีวิตการแต่งงาน</h4>
+                <p>ปูเป้ เพชรบุรี คืออินฟลูเอนเซอร์และแม่ค้าออนไลน์ชื่อดัง ซึ่งเป็นที่รู้จักอย่างกว้างขวางในฐานะ พระมเหสีของ "เอ็ม ออนิวรังสิต" โดยทั้งคู่มักทำคอนเทนต์ร่วมกันจนกลายเป็นคู่รักขวัญใจชาวเน็ตในวงการรถซิ่งและสู้ชีวิต ทั้งคู่มีเคมีที่เข้าขากันเป็นอย่างดีแต่ว่าสุดท้ายแล้วความรักของทั้งครู่ก็ถึงจุดสิ้นสุด</p>
+                <ul>
+                  <li><b>การประกาศหย่าร้าง:</b> ในช่วงเวลาต่อมา ทั้งคู่ได้ตัดสินใจแยกทางและหย่าร้างกันจริง ๆ ท่ามกลางกระแสดราม่าบนโลกออนไลน์</li>
+                  <li><b>สาเหตุการแยกทาง:</b> : ฝ่ายปูเป้ได้ออกมาเคลื่อนไหวทำนองว่า มีประเด็นเรื่องการนอกใจซ้ำซากจนทำให้หมดรักและไม่ขอหวนกลับไปอีก ขณะที่แฟนคลับต่างพากันส่งกำลังใจให้ทั้งสองฝ่ายในการมูฟออน</li>
+                </ul>
+                <p>แต่ถึงกระนั้นก็มีผู้คนมากมายเฝ้ารอคอยอย่างมีความหวังว่าทั้งคู่จะกลับมาเคียงคู่กันอีกครั้ง จึงได้ทำการสร้างประเพณีจำลองการแต่งงานของทั้งคู่ทุก 7 โมงเช้าของทุกวันเพื่อย้อนรำรึกถึงช่วงเวลาที่ทั้งสองได้เข้าสู่พิธีสมรสด้วยกัน</p>
+              </div>
+              <div class="col-12 col-md-6">
+                <center><img src="img_setthawut/wedding.jpg" class="rounded-3 mb-3" width="100%" alt=""></center>
+              </div>
+            </div>
+          </div>
+
+          
+      </div>
+    </div>
+ </div>
+
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

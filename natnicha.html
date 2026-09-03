@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>เทคโนโลยีสารสนเทศ 2/1</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts: Prompt -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      overflow-x: hidden;
+      background-color: #e8f5e9;
+      font-family: 'Prompt', sans-serif;
+    }
+
+    /* Sidebar desktop */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 56px; /* ความสูง navbar */
+      left: 0;
+      background: #343a40;
+      padding-top: 10px;
+    }
+
+    .sidebar a {
+      color: white;
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background: #495057;
+    }
+
+    .sidebar a.active-menu {
+      background: #2e7d32;
+      font-weight: 500;
+    }
+
+    /* Content */
+    .content {
+      margin-left: 250px;
+      padding: 30px 20px;
+      margin-top: 56px;
+    }
+
+    /* ตกแต่งเนื้อหาด้านใน พร้อมใส่สีพื้นหลังการ์ดเนื้อหาโทนเขียวภูเขา */
+    .main-container {
+      background: #f1f8e9;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #c8e6c9;
+    }
+
+    .custom-title {
+      color: #2e7d32;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .custom-title::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: #4caf50;
+      border-radius: 2px;
+    }
+
+    .content-text {
+      color: #334139;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .card-hover {
+      background: #ffffff;
+      border: none;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+      border: 1px solid #dcedc8;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(76, 175, 80, 0.2);
+    }
+
+    .card-hover img {
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card-hover:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .sidebar {
+        left: -250px;
+        transition: 0.3s;
+      }
+
+      .sidebar.active {
+        left: 0;
+      }
+
+      .content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-primary fixed-top">
+  <div class="container-fluid">
+
+    <!-- กลุ่มฝั่งซ้าย -->
+    <div class="d-flex align-items-center">
+      <button class="btn btn-outline-light me-2" onclick="toggleSidebar()">☰</button>
+      <span class="navbar-brand mb-0 h1">เทคโนโลยีสารสนเทศ 2/1</span>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar" style="margin-top: -10px;">
+    <a href="index.html">home</a>
+    <a href="pongsapat.html">pongsapat</a>
+    <a href="kittipron.html">กิตติพร สินนุรักษ์กูล</a>
+    <a href="phupha.html">ภูผา สุทธการ</a>
+    <a href="jiruchchaya.html">Jiruchchaya</a>
+    <a href="M_Aunew.html">ชีวประวัติ พระมหารังสิตมหิดลบรมวงค์เธอยอดฟ้าจุฬาลงกรณ์(เอ็ม)</a>
+    <a href="natnicha.html">natnicha</a>
+    <a href="">Manu1</a>
+    <a href="">Manu2</a>
+    <a href="">Manu3</a>
+  </div>
+
+<!-- Content -->
+<div class="content">
+    <div class="container main-container">
+
+        <!-- รูปปก -->
+        <div class="overflow-hidden rounded shadow-sm mb-4">
+          <img src="4-3128.webp"
+               class="img-fluid w-100"
+               style="height:420px; object-fit:cover;"
+               alt="ภาคเหนือ">
+        </div>
+
+        <h1 class="text-center mb-4 custom-title">🏔 รีวิวท่องเที่ยวภาคเหนือ</h1>
+
+        <p class="content-text" align="justify">
+            ภาคเหนือของประเทศไทยเป็นภูมิภาคที่มีธรรมชาติสวยงาม อากาศเย็นสบาย
+            และมีเอกลักษณ์ทางวัฒนธรรมที่โดดเด่น ทั้งประเพณี ภาษา อาหาร และวิถีชีวิตของผู้คน
+            จึงเป็นจุดหมายปลายทางยอดนิยมของนักท่องเที่ยวทั้งชาวไทยและชาวต่างชาติ
+            โดยเฉพาะในช่วงฤดูหนาวที่เต็มไปด้วยทะเลหมอก ดอกไม้เมืองหนาว และวิวภูเขาที่สวยงาม
+        </p>
+
+        <p class="content-text" align="justify">
+            จังหวัดยอดนิยมของภาคเหนือ ได้แก่ เชียงใหม่ เชียงราย น่าน แม่ฮ่องสอน และลำปาง
+            ซึ่งแต่ละจังหวัดมีสถานที่ท่องเที่ยวที่น่าสนใจแตกต่างกันออกไป
+            นักท่องเที่ยวสามารถสัมผัสธรรมชาติ ชมพระอาทิตย์ขึ้น เดินป่า เที่ยววัดโบราณ
+            หรือพักผ่อนในหมู่บ้านที่มีบรรยากาศเงียบสงบ
+        </p>
+
+        <p class="content-text" align="justify">
+            นอกจากสถานที่ท่องเที่ยวทางธรรมชาติแล้ว ภาคเหนือยังมีชื่อเสียงในเรื่องอาหารพื้นเมือง
+            เช่น ข้าวซอย ไส้อั่ว น้ำพริกหนุ่ม แคบหมู และแกงฮังเล
+            รวมถึงงานหัตถกรรมและสินค้าพื้นเมืองที่สะท้อนภูมิปัญญาของชาวล้านนา
+            นักท่องเที่ยวจึงสามารถเที่ยว ชิมอาหาร และเลือกซื้อของฝากได้ในทริปเดียว
+        </p>
+
+        <p class="content-text" align="justify">
+            หากใครกำลังมองหาสถานที่พักผ่อนที่เต็มไปด้วยธรรมชาติ อากาศบริสุทธิ์
+            และวัฒนธรรมที่เป็นเอกลักษณ์ ภาคเหนือถือเป็นอีกหนึ่งจุดหมายที่ไม่ควรพลาด
+            เพราะสามารถเที่ยวได้ตลอดทั้งปี และมีความสวยงามแตกต่างกันในแต่ละฤดูกาล
+        </p>
+
+        <hr class="my-5 text-muted">
+
+        <h3 class="text-center mb-4 custom-title">📍 สถานที่ท่องเที่ยวแนะนำ</h3>
+
+        <div class="row text-center">
+
+            <div class="col-md-4 mb-4">
+                <div class="card card-hover h-100 p-2">
+                    <div class="overflow-hidden rounded">
+                        <img src="funancfiaxraakymjqdm.jpg" class="img-fluid w-100">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="mt-2 fw-bold text-success">ดอยอินทนนท์</h5>
+                        <p class="text-muted small">ยอดเขาสูงที่สุดของประเทศไทย อากาศเย็นตลอดปี</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card card-hover h-100 p-2">
+                    <div class="overflow-hidden rounded">
+                        <img src="Mae-Kampong-Chiang-Mai-02.jpg" class="img-fluid w-100">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="mt-2 fw-bold text-success">บ้านแม่กำปอง</h5>
+                        <p class="text-muted small">หมู่บ้านเล็กกลางหุบเขา เหมาะกับการพักผ่อน</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card card-hover h-100 p-2">
+                    <div class="overflow-hidden rounded">
+                        <img src="p6.jpg" class="img-fluid w-100">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="mt-2 fw-bold text-success">ภูชี้ฟ้า</h5>
+                        <p class="text-muted small">จุดชมทะเลหมอกและพระอาทิตย์ขึ้นที่มีชื่อเสียง</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- JavaScript สำหรับเปิด-ปิด Sidebar บนมือถือ -->
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
